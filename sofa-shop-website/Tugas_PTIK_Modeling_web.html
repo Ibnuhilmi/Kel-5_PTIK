@@ -1,0 +1,2793 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="dashboard">
+  <meta name="design-style" content="atelier">
+  <title>Sofa Shop — Katalog Furniture Sofa Modern &amp; Elegan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* 1 & 2. Atelier Palette harmonized with Sofa Shop requested colors */
+      --background: #FDFBF7;              /* Krem terang hangat */
+      --surface-white: #FFFFFF;           /* Putih bersih untuk kartu & panel */
+      --surface-container-low: #F5F2EB;   /* Krem hangat utama */
+      --surface-container: #EDE9E0;       /* Krem medium */
+      --surface-container-high: #E5E5E5;  /* Abu-abu soft */
+
+      /* Ink & Typography Colors */
+      --on-surface: #09090B;              /* Hitam pekat untuk headline */
+      --on-surface-charcoal: #18181B;     /* Charcoal utama */
+      --on-surface-variant: #52525B;      /* Abu-abu terbaca kontras >= 4.5:1 di atas krem */
+      --on-surface-muted: #71717A;        /* Abu-abu soft untuk ikon / border label */
+
+      /* Rules & Borders */
+      --outline: #18181B;
+      --outline-variant: #E5E5E5;
+      --outline-stone: #D8D3CB;
+
+      /* Accents */
+      --primary: #18181B;
+      --on-primary: #FFFFFF;
+      --primary-hover: #09090B;
+      --primary-container: #F5F2EB;
+      --on-primary-container: #18181B;
+      --secondary: #7A5C48;               /* Taupe editorial untuk kicker & label aksen */
+      --tertiary: #A89C8C;
+      --error: #9A2B22;
+      --error-bg: #FDF2F1;
+      --on-error: #FFFFFF;
+
+      /* 3. Shared Tokens */
+      --positive: #27533D;
+      --positive-bg: #ECF4EF;
+      --warning: #8A5A19;
+      --warning-bg: #FAF4E8;
+      --focus: #18181B;
+
+      /* Product Swatch Tokens (all colors in :root) */
+      --swatch-linen: #EAE3D5;
+      --swatch-linen-shade: #D3C9B6;
+      --swatch-linen-deep: #B8AC96;
+
+      --swatch-charcoal: #2E2F34;
+      --swatch-charcoal-shade: #212226;
+      --swatch-charcoal-deep: #141518;
+
+      --swatch-taupe: #9E8A78;
+      --swatch-taupe-shade: #83705F;
+      --swatch-taupe-deep: #685748;
+
+      --swatch-cognac: #9C5A35;
+      --swatch-cognac-shade: #7E4525;
+      --swatch-cognac-deep: #5E3118;
+
+      --swatch-slate: #7D848D;
+      --swatch-slate-shade: #636A73;
+      --swatch-slate-deep: #4A5058;
+
+      --swatch-cream: #F3EFE6;
+      --swatch-cream-shade: #DFD8CA;
+      --swatch-cream-deep: #C4BBA8;
+
+      --swatch-olive: #68705C;
+      --swatch-olive-shade: #525947;
+      --swatch-olive-deep: #3D4334;
+
+      --swatch-obsidian: #1E1E22;
+      --swatch-obsidian-shade: #121215;
+      --swatch-obsidian-deep: #09090B;
+
+      --wood-oak: #C39D72;
+      --wood-walnut: #5D422E;
+      --metal-brass: #B9975B;
+      --metal-dark: #27272A;
+
+      /* Shadows & Scrims */
+      --shadow-card: 0 2px 12px rgba(24, 24, 27, 0.04);
+      --shadow-card-hover: 0 20px 38px -14px rgba(9, 9, 11, 0.14);
+      --shadow-modal: 0 28px 64px -16px rgba(9, 9, 11, 0.25);
+      --shadow-toast: 0 14px 32px -8px rgba(9, 9, 11, 0.22);
+      --scrim: rgba(9, 9, 11, 0.56);
+
+      /* Fonts */
+      --font-headline: 'Playfair Display', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-label: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+      /* Type Scale */
+      --display-size: clamp(2.35rem, 1.35rem + 3.4vw, 4.1rem);
+      --headline-size: clamp(1.7rem, 1.2rem + 1.6vw, 2.45rem);
+      --subhead-size: clamp(1.125rem, 1rem + 0.45vw, 1.35rem);
+      --body-size: clamp(0.95rem, 0.92rem + 0.14vw, 1.02rem);
+      --label-size: 0.75rem;
+
+      /* Shape & Rules */
+      --rounded-sm: 2px;
+      --rounded: 4px;
+      --rounded-lg: 8px;
+      --rounded-pill: 999px;
+      --rule-ink: 1px solid var(--outline);
+      --rule-soft: 1px solid var(--outline-variant);
+      --rule-stone: 1px solid var(--outline-stone);
+      --label-tracking: 0.18em;
+
+      /* Spacing Scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 5.5rem;
+      --touch-min: 2.75rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 140ms;
+      --dur-short: 240ms;
+      --dur-long: 480ms;
+    }
+
+    /* Base Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface-charcoal);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+    img, svg { display: block; max-width: 100%; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Accessibility Focus Ring */
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Typography Helpers */
+    .label-voice {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--label-tracking);
+      color: var(--secondary);
+    }
+    .display-title {
+      font-family: var(--font-headline);
+      font-weight: 500;
+      font-size: var(--display-size);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .display-title em, .section-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .section-title {
+      font-family: var(--font-headline);
+      font-weight: 500;
+      font-size: var(--headline-size);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .lede {
+      font-size: var(--subhead-size);
+      line-height: 1.6;
+      color: var(--on-surface-variant);
+      max-width: 60ch;
+      margin: 0;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-inline: var(--space-xl);
+    }
+
+    /* Header / Navigation */
+    .site-header {
+      background-color: var(--background);
+      border-bottom: var(--rule-soft);
+      padding-block: var(--space-md);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      text-decoration: none;
+      color: var(--on-surface);
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: var(--rule-ink);
+      background-color: var(--surface-white);
+      color: var(--on-surface);
+    }
+    .brand-text-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--on-surface);
+    }
+    .brand-sub {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: var(--label-tracking);
+      color: var(--secondary);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xl);
+    }
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-min);
+      text-decoration: none;
+      font-size: var(--label-size);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--label-tracking);
+      color: var(--on-surface-variant);
+      border-bottom: 1px solid transparent;
+      transition: color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--on-surface);
+      border-bottom-color: var(--outline);
+    }
+
+    .cart-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      min-height: var(--touch-min);
+      padding: 0 var(--space-md);
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border: 1px solid var(--primary);
+      border-radius: var(--rounded-sm);
+      font-size: var(--label-size);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .cart-nav-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+    .cart-count-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding-inline: var(--space-xs);
+      background-color: var(--surface-white);
+      color: var(--on-surface);
+      border-radius: var(--rounded-pill);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--touch-min);
+      min-height: var(--touch-min);
+      background: transparent;
+      border: var(--rule-ink);
+      color: var(--on-surface);
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: var(--touch-min);
+      padding: 0 var(--space-lg);
+      font-size: var(--label-size);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      border-radius: var(--rounded-sm);
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out),
+                  transform var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out);
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border: 1px solid var(--primary);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-card);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--on-surface);
+      border: var(--rule-ink);
+    }
+    .btn-secondary:hover {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-subtle {
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+      border: var(--rule-stone);
+    }
+    .btn-subtle:hover {
+      background-color: var(--surface-container-high);
+    }
+
+    /* Section 1: Hero (Beranda) */
+    .hero-section {
+      padding-block: var(--space-2xl) var(--space-xl);
+      border-bottom: var(--rule-soft);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      padding-top: var(--space-xs);
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-lg);
+      padding-top: var(--space-lg);
+    }
+    .ruled-metric {
+      border-top: var(--rule-ink);
+      padding-top: var(--space-sm);
+    }
+    .metric-val {
+      font-family: var(--font-headline);
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+      font-weight: 500;
+      color: var(--on-surface);
+      line-height: 1.2;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    .metric-label {
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--on-surface);
+      margin-top: var(--space-xs);
+    }
+    .metric-note {
+      font-size: 0.82rem;
+      color: var(--secondary);
+      margin-top: var(--space-xs);
+    }
+
+    /* Hero Gallery Showcase Plate */
+    .hero-plate {
+      background-color: var(--surface-container-low);
+      border: var(--rule-soft);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      box-shadow: var(--shadow-card);
+    }
+    .hero-plate-stage {
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      padding: var(--space-lg);
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-plate-stage svg {
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      transition: transform var(--dur-long) var(--ease-out);
+    }
+    .hero-plate:hover .hero-plate-stage svg {
+      transform: scale(1.03);
+    }
+    .hero-plate-caption {
+      border-top: var(--rule-ink);
+      padding-top: var(--space-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .hero-plate-title {
+      font-family: var(--font-headline);
+      font-size: 1.2rem;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .hero-plate-meta {
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+    }
+    .hero-switcher {
+      display: flex;
+      gap: var(--space-xs);
+      flex-wrap: wrap;
+    }
+    .hero-switch-btn {
+      min-height: 36px;
+      padding: 0 var(--space-sm);
+      border: var(--rule-stone);
+      background-color: var(--surface-white);
+      color: var(--on-surface-variant);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .hero-switch-btn.active {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+
+    /* Value Proposition Strip */
+    .pillars-strip {
+      margin-top: var(--space-2xl);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+    .pillar-item {
+      border-top: var(--rule-ink);
+      padding-top: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .pillar-head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--on-surface);
+    }
+    .pillar-title {
+      font-family: var(--font-headline);
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin: 0;
+    }
+    .pillar-desc {
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    /* Section 2: Katalog Produk */
+    .catalog-section {
+      padding-block: var(--space-3xl) var(--space-2xl);
+      background-color: var(--surface-container-low);
+      border-bottom: var(--rule-soft);
+    }
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--space-xl);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-xl);
+    }
+    .section-header-copy {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      max-width: 65ch;
+    }
+
+    /* Filter Toolbar */
+    .catalog-toolbar {
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .filter-btn {
+      min-height: var(--touch-min);
+      padding: 0 var(--space-md);
+      background-color: var(--background);
+      color: var(--on-surface-variant);
+      border: var(--rule-stone);
+      border-radius: var(--rounded-sm);
+      font-size: var(--label-size);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out);
+    }
+    .filter-btn:hover {
+      border-color: var(--outline);
+      color: var(--on-surface);
+    }
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+
+    .toolbar-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 280px) auto;
+      gap: var(--space-md);
+      align-items: end;
+      border-top: var(--rule-soft);
+      padding-top: var(--space-md);
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-size: var(--label-size);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--on-surface);
+    }
+    .field-input, .field-select, .field-textarea {
+      width: 100%;
+      min-height: var(--touch-min);
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      color: var(--on-surface);
+      border: 1px solid var(--outline-stone);
+      border-radius: var(--rounded-sm);
+      font-size: 0.95rem;
+      transition: border-color var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+    }
+    .field-select {
+      padding-right: var(--space-xl);
+    }
+    .field-textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .field-input:focus, .field-select:focus, .field-textarea:focus {
+      border-color: var(--outline);
+      background-color: var(--surface-white);
+      outline: none;
+    }
+    .catalog-count {
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+      min-height: var(--touch-min);
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    /* Product Cards Grid */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(285px, 100%), 1fr));
+      gap: var(--space-lg);
+    }
+    .product-card {
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      border-radius: var(--rounded);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--dur-short) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  border-color var(--dur-short) var(--ease-out);
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+      border-color: var(--outline-stone);
+    }
+    .product-visual {
+      background-color: var(--background);
+      border-bottom: var(--rule-soft);
+      padding: var(--space-lg) var(--space-md);
+      min-height: 205px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-visual svg {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      transition: transform var(--dur-long) var(--ease-out);
+    }
+    .product-card:hover .product-visual svg {
+      transform: scale(1.06);
+    }
+    .product-badge {
+      position: absolute;
+      top: var(--space-sm);
+      left: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--secondary);
+    }
+
+    .product-body {
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      flex: 1;
+    }
+    .product-swatches {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xs);
+    }
+    .swatch-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--rounded-pill);
+      border: 1px solid var(--outline-stone);
+      cursor: pointer;
+      padding: 0;
+      transition: transform var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+    }
+    .swatch-dot:hover {
+      transform: scale(1.12);
+    }
+    .swatch-dot.active {
+      box-shadow: 0 0 0 2px var(--surface-white), 0 0 0 4px var(--outline);
+    }
+    .swatch-name-inline {
+      font-size: 0.78rem;
+      color: var(--on-surface-variant);
+      margin-left: var(--space-xs);
+    }
+    .product-title {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--on-surface);
+      margin: 0;
+      line-height: 1.25;
+    }
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .product-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-top: var(--space-sm);
+      margin-top: auto;
+      border-top: var(--rule-soft);
+    }
+    .product-price {
+      font-family: var(--font-headline);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    .product-dim {
+      font-size: 0.78rem;
+      color: var(--on-surface-variant);
+    }
+    .product-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: var(--space-sm);
+      padding-top: var(--space-sm);
+    }
+    .product-actions .btn {
+      padding-inline: var(--space-sm);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+    }
+
+    .empty-catalog {
+      grid-column: 1 / -1;
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      padding: var(--space-2xl);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    /* Section 3: Tentang Kami */
+    .about-section {
+      padding-block: var(--space-3xl) var(--space-2xl);
+      background-color: var(--background);
+      border-bottom: var(--rule-soft);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+    .about-story {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .material-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+    .material-item {
+      border-top: var(--rule-ink);
+      padding-top: var(--space-sm);
+    }
+    .material-item h3 {
+      font-family: var(--font-headline);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--on-surface);
+      margin: 0 0 var(--space-xs);
+    }
+    .material-item p {
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    .team-panel {
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .project-id-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+      background-color: var(--surface-container-low);
+      padding: var(--space-md);
+      border: var(--rule-soft);
+    }
+    .id-item-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--secondary);
+    }
+    .id-item-val {
+      font-weight: 600;
+      color: var(--on-surface);
+      font-size: 0.92rem;
+    }
+    .team-table-wrap {
+      overflow-x: auto;
+    }
+    .team-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .team-table th {
+      text-align: left;
+      padding: var(--space-sm) var(--space-xs);
+      border-top: var(--rule-ink);
+      border-bottom: var(--rule-ink);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--on-surface);
+    }
+    .team-table td {
+      padding: var(--space-sm) var(--space-xs);
+      border-bottom: var(--rule-soft);
+      color: var(--on-surface-variant);
+      vertical-align: top;
+    }
+    .team-table td:first-child {
+      font-weight: 600;
+      color: var(--on-surface);
+      white-space: nowrap;
+    }
+
+    /* Section 4: Kontak & Simulasi Pemesanan */
+    .contact-section {
+      padding-block: var(--space-3xl) var(--space-2xl);
+      background-color: var(--surface-container-low);
+    }
+    .demo-notice {
+      background-color: var(--surface-white);
+      border-left: 3px solid var(--secondary);
+      border-top: var(--rule-soft);
+      border-right: var(--rule-soft);
+      border-bottom: var(--rule-soft);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-xl);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+
+    /* Simulated Order Panel */
+    .order-box {
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      box-shadow: var(--shadow-card);
+    }
+    .order-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: var(--rule-ink);
+      padding-bottom: var(--space-sm);
+    }
+    .order-box-title {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .order-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .order-item-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-sm);
+      align-items: center;
+      padding: var(--space-sm);
+      background-color: var(--background);
+      border: var(--rule-soft);
+    }
+    .order-item-name {
+      font-weight: 600;
+      color: var(--on-surface);
+      font-size: 0.92rem;
+    }
+    .order-item-sub {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+    }
+    .qty-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: var(--rule-stone);
+      background-color: var(--surface-white);
+      color: var(--on-surface);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .qty-btn:hover {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+    .qty-num {
+      min-width: 24px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .order-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: var(--rule-ink);
+      padding-top: var(--space-sm);
+    }
+    .order-total-val {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .showroom-card {
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    .showroom-map-svg {
+      border: var(--rule-soft);
+      background-color: var(--background);
+      padding: var(--space-sm);
+    }
+
+    /* Contact Form */
+    .contact-form-card {
+      background-color: var(--surface-white);
+      border: var(--rule-soft);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+    .field-error {
+      font-size: 0.8rem;
+      color: var(--error);
+      min-height: 1.1em;
+    }
+    .form-status-msg {
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.88rem;
+      display: none;
+    }
+    .form-status-msg.error {
+      display: block;
+      background-color: var(--error-bg);
+      color: var(--error);
+      border-left: 3px solid var(--error);
+    }
+    .form-status-msg.success {
+      display: block;
+      background-color: var(--positive-bg);
+      color: var(--positive);
+      border-left: 3px solid var(--positive);
+    }
+
+    /* Recent Submitted Log */
+    .order-history-box {
+      margin-top: var(--space-lg);
+      border-top: var(--rule-soft);
+      padding-top: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .history-chip {
+      background-color: var(--background);
+      border: var(--rule-soft);
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.84rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--on-surface);
+      color: var(--background);
+      padding-block: var(--space-2xl) var(--space-xl);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-xl);
+      flex-wrap: wrap;
+      padding-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--on-surface-variant);
+    }
+    .footer-brand {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0 0 var(--space-xs);
+      color: var(--surface-white);
+    }
+    .footer-note {
+      font-size: 0.88rem;
+      color: var(--surface-container-high);
+      max-width: 46ch;
+      margin: 0;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+    }
+    .footer-links a {
+      color: var(--surface-container-high);
+      text-decoration: none;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: var(--label-tracking);
+    }
+    .footer-links a:hover {
+      color: var(--surface-white);
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      padding-top: var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      font-size: 0.82rem;
+      color: var(--surface-container-high);
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: var(--scrim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-short) var(--ease-out);
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-dialog {
+      background-color: var(--surface-white);
+      border: var(--rule-ink);
+      width: 100%;
+      max-width: 880px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-modal);
+      transform: translateY(16px);
+      transition: transform var(--dur-short) var(--ease-out);
+    }
+    .modal-backdrop.open .modal-dialog {
+      transform: translateY(0);
+    }
+    .modal-dialog.narrow {
+      max-width: 560px;
+    }
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-md) var(--space-lg);
+      border-bottom: var(--rule-soft);
+      background-color: var(--background);
+    }
+    .modal-close-btn {
+      width: var(--touch-min);
+      height: var(--touch-min);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: var(--rule-stone);
+      color: var(--on-surface);
+      cursor: pointer;
+    }
+    .modal-close-btn:hover {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+    .modal-content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: var(--space-xl);
+      padding: var(--space-xl);
+    }
+    .modal-visual-box {
+      background-color: var(--surface-container-low);
+      border: var(--rule-soft);
+      padding: var(--space-xl) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+    .modal-visual-box svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+    }
+    .dim-callout {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+      border-top: var(--rule-stone);
+      padding-top: var(--space-sm);
+      width: 100%;
+      text-align: center;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-block: var(--space-md);
+      font-size: 0.88rem;
+    }
+    .spec-table th {
+      text-align: left;
+      padding: var(--space-xs) 0;
+      color: var(--on-surface-variant);
+      font-weight: 500;
+      border-bottom: var(--rule-soft);
+      width: 38%;
+    }
+    .spec-table td {
+      padding: var(--space-xs) 0;
+      color: var(--on-surface);
+      font-weight: 500;
+      border-bottom: var(--rule-soft);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: var(--space-lg);
+      right: var(--space-lg);
+      z-index: 200;
+      background-color: var(--on-surface);
+      color: var(--surface-white);
+      padding: var(--space-md) var(--space-lg);
+      border: 1px solid var(--on-surface-charcoal);
+      box-shadow: var(--shadow-toast);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      max-width: 380px;
+      font-size: 0.88rem;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .modal-content-grid {
+        grid-template-columns: 1fr;
+      }
+      .pillars-strip {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+      .toolbar-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-inline: var(--space-md);
+      }
+      .mobile-menu-toggle {
+        display: inline-flex;
+      }
+      .nav-wrapper {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+        padding-top: var(--space-md);
+        border-top: var(--rule-soft);
+      }
+      .nav-wrapper.open {
+        display: flex;
+      }
+      .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-xs);
+        width: 100%;
+      }
+      .hero-metrics {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+      .form-row-2,
+      .project-id-grid {
+        grid-template-columns: 1fr;
+      }
+      .toast {
+        left: var(--space-md);
+        right: var(--space-md);
+        bottom: var(--space-md);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header & Navigasi -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#beranda" class="brand-link" onclick="navigateToSection('beranda', event)">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M4 13V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"/>
+            <path d="M2 12a2 2 0 0 1 2 2v3h16v-3a2 2 0 0 1 2-2"/>
+            <path d="M6 17v2M18 17v2"/>
+          </svg>
+        </span>
+        <span class="brand-text-group">
+          <span class="brand-name">Sofa Shop</span>
+          <span class="brand-sub">Koleksi Kelompok 5</span>
+        </span>
+      </a>
+
+      <button type="button" class="mobile-menu-toggle" id="mobile-menu-btn" aria-expanded="false" aria-controls="main-nav-wrapper" aria-label="Buka menu navigasi" onclick="toggleMobileMenu()">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-wrapper" id="main-nav-wrapper">
+        <nav aria-label="Navigasi Utama">
+          <ul class="nav-list">
+            <li><a href="#beranda" class="nav-link active" data-nav="beranda" onclick="navigateToSection('beranda', event)">Beranda</a></li>
+            <li><a href="#katalog" class="nav-link" data-nav="katalog" onclick="navigateToSection('katalog', event)">Katalog</a></li>
+            <li><a href="#tentang" class="nav-link" data-nav="tentang" onclick="navigateToSection('tentang', event)">Tentang Kami</a></li>
+            <li><a href="#kontak" class="nav-link" data-nav="kontak" onclick="navigateToSection('kontak', event)">Kontak</a></li>
+          </ul>
+        </nav>
+
+        <button type="button" class="cart-nav-btn" onclick="navigateToSection('kontak')">
+          <i data-lucide="shopping-bag" width="16" height="16" aria-hidden="true"></i>
+          <span>Pesanan</span>
+          <span class="cart-count-pill" id="header-cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- BAGIAN 1: BERANDA (HOME) -->
+    <section id="beranda" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <span class="label-voice">Koleksi Furnishing Terkurasi &bull; Kelompok 5 PTIK</span>
+            <h1 class="display-title">Kenyamanan <em>Arsitektural</em> untuk Ruang Hidup Anda</h1>
+            <p class="lede">
+              Sofa Shop menghadirkan katalog kurasi sofa modern yang memadukan proporsi minimalis, material kayu solid tersertifikasi, serta palet netral abadi yang menenangkan ruang keluarga Anda.
+            </p>
+            <div class="hero-actions">
+              <a href="#katalog" class="btn btn-primary" onclick="navigateToSection('katalog', event)">
+                <span>Jelajahi Koleksi</span>
+                <i data-lucide="arrow-down-right" width="16" height="16" aria-hidden="true"></i>
+              </a>
+              <a href="#tentang" class="btn btn-secondary" onclick="navigateToSection('tentang', event)">Tentang Kami</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="ruled-metric">
+                <div class="metric-val">8 Model</div>
+                <div class="metric-label">Kurasi Sofa</div>
+                <div class="metric-note">4 kategori ruang tamu</div>
+              </div>
+              <div class="ruled-metric">
+                <div class="metric-val">5&ndash;7 Th</div>
+                <div class="metric-label">Garansi Rangka</div>
+                <div class="metric-note">Kayu solid kiln-dried</div>
+              </div>
+              <div class="ruled-metric">
+                <div class="metric-val">24 Varian</div>
+                <div class="metric-label">Opsi Pelapis</div>
+                <div class="metric-note">Pratinjau warna langsung</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-plate reveal">
+            <div class="hero-plate-stage" id="hero-svg-stage">
+              <!-- Rendered dynamically by JS -->
+            </div>
+            <div class="hero-plate-caption">
+              <div>
+                <p class="hero-plate-title" id="hero-feature-title">Aurelia 3-Seater Linen</p>
+                <span class="hero-plate-meta" id="hero-feature-meta">Sofa Minimalis &bull; Rp 8.950.000</span>
+              </div>
+              <div class="hero-switcher" role="group" aria-label="Pilih sorotan sofa unggulan">
+                <button type="button" class="hero-switch-btn active" data-hero-idx="0" onclick="selectHeroFeature(0)">Minimalis</button>
+                <button type="button" class="hero-switch-btn" data-hero-idx="2" onclick="selectHeroFeature(2)">Kulit</button>
+                <button type="button" class="hero-switch-btn" data-hero-idx="4" onclick="selectHeroFeature(4)">Sectional</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pillars-strip reveal">
+          <article class="pillar-item">
+            <div class="pillar-head">
+              <i data-lucide="layers" width="18" height="18" aria-hidden="true"></i>
+              <h2 class="pillar-title">Konstruksi Kayu Solid Oven</h2>
+            </div>
+            <p class="pillar-desc">Setiap rangka menggunakan kayu jati, mahoni, atau oak pilihan yang dikeringkan presisi untuk stabilitas jangka panjang.</p>
+          </article>
+          <article class="pillar-item">
+            <div class="pillar-head">
+              <i data-lucide="sparkles" width="18" height="18" aria-hidden="true"></i>
+              <h2 class="pillar-title">Tekstil &amp; Kulit Terkurasi</h2>
+            </div>
+            <p class="pillar-desc">Pilihan linen bernapas, kain bouclé lembut, hingga kulit full-grain dengan warna krem, taupe, abu-abu, dan charcoal.</p>
+          </article>
+          <article class="pillar-item">
+            <div class="pillar-head">
+              <i data-lucide="clipboard-check" width="18" height="18" aria-hidden="true"></i>
+              <h2 class="pillar-title">Simulasi Pesan Interaktif</h2>
+            </div>
+            <p class="pillar-desc">Bandingkan dimensi, coba warna pelapis secara visual, dan uji alur pemesanan simulasi tanpa transaksi sungguhan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 2: KATALOG PRODUK (MAIN CONTENT) -->
+    <section id="katalog" class="catalog-section">
+      <div class="container">
+        <div class="section-header-row reveal">
+          <div class="section-header-copy">
+            <span class="label-voice">02 / Katalog Produk</span>
+            <h2 class="section-title">Kurasi Sofa <em>Modern</em> &amp; Elegan</h2>
+            <p class="lede">Saring berdasarkan tipe ruang, ubah warna kain secara langsung pada kartu, atau buka spesifikasi lengkap setiap unit.</p>
+          </div>
+        </div>
+
+        <div class="catalog-toolbar reveal">
+          <div class="filter-pills" role="group" aria-label="Filter kategori sofa" id="category-filters">
+            <button type="button" class="filter-btn active" data-cat="Semua" onclick="setCategory('Semua')">Semua (8)</button>
+            <button type="button" class="filter-btn" data-cat="Sofa Minimalis" onclick="setCategory('Sofa Minimalis')">Sofa Minimalis (2)</button>
+            <button type="button" class="filter-btn" data-cat="Sofa Kulit" onclick="setCategory('Sofa Kulit')">Sofa Kulit (2)</button>
+            <button type="button" class="filter-btn" data-cat="Sofa L / Sectional" onclick="setCategory('Sofa L / Sectional')">Sofa L / Sectional (2)</button>
+            <button type="button" class="filter-btn" data-cat="Modular & Recliner" onclick="setCategory('Modular & Recliner')">Modular &amp; Recliner (2)</button>
+          </div>
+
+          <div class="toolbar-controls">
+            <div class="field-group">
+              <label for="catalog-search" class="field-label">Cari Model atau Material</label>
+              <input type="search" id="catalog-search" class="field-input" placeholder="Contoh: linen, kulit, jati, bouclé..." oninput="setSearchQuery(this.value)">
+            </div>
+            <div class="field-group">
+              <label for="catalog-sort" class="field-label">Urutkan Harga</label>
+              <select id="catalog-sort" class="field-select" onchange="setSortOrder(this.value)">
+                <option value="default">Urutan Kurasi</option>
+                <option value="price-asc">Harga: Terendah ke Tertinggi</option>
+                <option value="price-desc">Harga: Tertinggi ke Terendah</option>
+              </select>
+            </div>
+            <div class="catalog-count" id="catalog-count-label" aria-live="polite">Menampilkan 8 dari 8 produk</div>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalog-grid">
+          <!-- Product cards injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 3: TENTANG KAMI (ABOUT US) -->
+    <section id="tentang" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-story reveal">
+            <div>
+              <span class="label-voice">03 / Tentang Kami</span>
+              <h2 class="section-title" style="margin-top: var(--space-xs);">Filosofi <em>Ketenangan</em> dalam Setiap Jahitan</h2>
+            </div>
+            <p class="lede">
+              Sofa Shop lahir sebagai proyek kurasi digital Kelompok 5 untuk menghadirkan pengalaman memilih furnitur ruang tamu yang tenang, informatif, dan transparan secara teknis.
+            </p>
+            <p>
+              Kami percaya sebuah sofa bukan sekadar tempat duduk, melainkan jangkar visual bagi ruang hidup. Karena itu, seluruh koleksi kami dirancang dalam palet krem hangat, putih murni, abu-abu lembut, dan charcoal yang mudah menyatu dengan arsitektur interior modern maupun klasik.
+            </p>
+
+            <div class="material-list">
+              <div class="material-item">
+                <h3>Rangka &amp; Sambungan Presisi</h3>
+                <p>Kombinasi kayu jati, oak, dan mahoni bersertifikat dengan sambungan pasak dan sekrup baja agar tidak berderit meski dipakai bertahun-tahun.</p>
+              </div>
+              <div class="material-item">
+                <h3>Kenyamanan Ergonomis Berlapis</h3>
+                <p>Lapisan busa High-Resilience D32 dipadukan dengan pegas saku (pocket spring) dan dakron silikon untuk dukungan tulang belakang yang seimbang.</p>
+              </div>
+              <div class="material-item">
+                <h3>Transparansi Dimensi &amp; Perawatan</h3>
+                <p>Setiap kartu katalog menyertakan ukuran akurat (P &times; L &times; T) dan jenis pelapis agar pembeli dapat mencocokkan sofa dengan denah rumah.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="team-panel reveal" aria-label="Profil Pengelola Kelompok 5">
+            <div>
+              <span class="label-voice">Profil Pengelola Proyek</span>
+              <h3 class="section-title" style="font-size: 1.55rem; margin-top: var(--space-xs);">Kelompok 5 &mdash; Tugas Website PTIK</h3>
+            </div>
+
+            <div class="project-id-grid">
+              <div>
+                <div class="id-item-label">Kelompok</div>
+                <div class="id-item-val">Kelompok 5</div>
+              </div>
+              <div>
+                <div class="id-item-label">Tema Website</div>
+                <div class="id-item-val">Produk &amp; Toko Online</div>
+              </div>
+              <div>
+                <div class="id-item-label">Nama Website</div>
+                <div class="id-item-val">Sofa Shop</div>
+              </div>
+              <div>
+                <div class="id-item-label">Teknologi</div>
+                <div class="id-item-val">HTML5, CSS3, Vanilla JS</div>
+              </div>
+            </div>
+
+            <div class="team-table-wrap">
+              <table class="team-table">
+                <thead>
+                  <tr>
+                    <th>Peran Kelompok</th>
+                    <th>Kontribusi &amp; Bagian yang Dikerjakan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ketua Kelompok</td>
+                    <td>Koordinasi proyek, struktur 4 bagian navigasi, perancangan Beranda, dan penyelarasan alur presentasi.</td>
+                  </tr>
+                  <tr>
+                    <td>Desainer UI/UX</td>
+                    <td>Penentuan palet Krem&ndash;Putih&ndash;Charcoal, tipografi Playfair Display, serta tata letak responsif desktop &amp; mobile.</td>
+                  </tr>
+                  <tr>
+                    <td>Kurator Konten</td>
+                    <td>Penulisan deskripsi, spesifikasi teknis 8 model sofa, pengelompokan 4 kategori, dan bagian Tentang Kami.</td>
+                  </tr>
+                  <tr>
+                    <td>Pengembang Interaktif</td>
+                    <td>Logika filter katalog tanpa reload, modal detail produk, swatch warna dinamis, serta simulasi pemesanan.</td>
+                  </tr>
+                  <tr>
+                    <td>Penguji &amp; Dokumentasi</td>
+                    <td>Pengujian tombol, responsivitas layar, validasi formulir kontak, serta penyusunan dokumentasi proyek.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 4: KONTAK & SIMULASI PEMESANAN -->
+    <section id="kontak" class="contact-section">
+      <div class="container">
+        <div class="section-header-row reveal">
+          <div class="section-header-copy">
+            <span class="label-voice">04 / Kontak &amp; Pemesanan</span>
+            <h2 class="section-title">Konsultasi &amp; <em>Simulasi</em> Pesanan</h2>
+            <p class="lede">Tinjau daftar sofa yang Anda pilih, sesuaikan jumlahnya, lalu kirim formulir untuk menguji konfirmasi pemesanan secara interaktif.</p>
+          </div>
+        </div>
+
+        <div class="demo-notice reveal" role="note">
+          <i data-lucide="info" width="20" height="20" aria-hidden="true" style="flex-shrink: 0; color: var(--secondary); margin-top: 2px;"></i>
+          <div>
+            <strong>Keterangan Fitur Demo / Simulasi:</strong> Sesuai ketentuan proyek Kelompok 5, seluruh fitur keranjang, perhitungan estimasi biaya, dan pengiriman formulir pada halaman ini merupakan <em>simulasi antarmuka</em> dan tidak memproses pembayaran atau transaksi keuangan sungguhan.
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Simulated Order List & Showroom Info -->
+          <div>
+            <div class="order-box reveal" id="order-summary-panel">
+              <div class="order-box-header">
+                <h3 class="order-box-title">Daftar Simulasi Pesanan</h3>
+                <button type="button" class="btn btn-subtle" id="clear-cart-btn" style="min-height: 36px; padding-inline: var(--space-sm); font-size: 0.7rem;" onclick="handleClearCart(this)">Kosongkan</button>
+              </div>
+
+              <div class="order-items-list" id="order-items-list">
+                <!-- Rendered by JS -->
+              </div>
+
+              <div class="order-total-row">
+                <span class="label-voice" style="color: var(--on-surface-variant);">Estimasi Total Simulasi</span>
+                <span class="order-total-val" id="order-total-val">Rp 0</span>
+              </div>
+            </div>
+
+            <div class="showroom-card reveal">
+              <span class="label-voice">Showroom &amp; Informasi Kontak</span>
+              <div class="contact-info-list">
+                <div class="contact-info-item">
+                  <i data-lucide="map-pin" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Showroom Simulasi Jakarta:</strong> Jl. Kemang Raya No. 48, Jakarta Selatan 12730</span>
+                </div>
+                <div class="contact-info-item">
+                  <i data-lucide="clock" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Jam Kunjungan:</strong> Senin &ndash; Minggu, 10.00 &ndash; 20.00 WIB</span>
+                </div>
+                <div class="contact-info-item">
+                  <i data-lucide="mail" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Email Layanan:</strong> halo@sofashop-kelompok5.example.com</span>
+                </div>
+                <div class="contact-info-item">
+                  <i data-lucide="phone" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Telepon Konsultasi:</strong> (021) 555-0195 (Nomor Simulasi)</span>
+                </div>
+              </div>
+
+              <div class="showroom-map-svg">
+                <svg viewBox="0 0 420 150" width="100%" aria-label="Denah zona galeri Showroom Sofa Shop">
+                  <rect x="6" y="6" width="408" height="138" fill="var(--surface-white)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <rect x="18" y="18" width="115" height="65" fill="var(--surface-container-low)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <text x="75" y="54" text-anchor="middle" font-size="10" fill="var(--on-surface)" font-weight="600">ZONA MINIMALIS</text>
+
+                  <rect x="145" y="18" width="120" height="65" fill="var(--surface-container-low)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <text x="205" y="54" text-anchor="middle" font-size="10" fill="var(--on-surface)" font-weight="600">GALERI KULIT</text>
+
+                  <rect x="277" y="18" width="125" height="65" fill="var(--surface-container-low)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <text x="339" y="54" text-anchor="middle" font-size="10" fill="var(--on-surface)" font-weight="600">LOUNGE SECTIONAL</text>
+
+                  <rect x="18" y="95" width="247" height="36" fill="var(--background)" stroke="var(--outline)" stroke-width="1"/>
+                  <text x="141" y="117" text-anchor="middle" font-size="10" fill="var(--secondary)" font-weight="600">MEJA KONSULTASI &amp; SAMPEL KAIN</text>
+
+                  <rect x="277" y="95" width="125" height="36" fill="var(--primary)"/>
+                  <text x="339" y="117" text-anchor="middle" font-size="10" fill="var(--on-primary)" font-weight="600">PINTU MASUK</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact & Order Form -->
+          <div class="contact-form-card reveal">
+            <div>
+              <span class="label-voice">Formulir Interaktif</span>
+              <h3 class="section-title" style="font-size: 1.55rem; margin-top: var(--space-xs);">Kirim Pesan atau Simulasi Pesanan</h3>
+            </div>
+
+            <form id="order-form" novalidate onsubmit="submitOrderForm(event)">
+              <div class="form-row-2">
+                <div class="field-group">
+                  <label for="order-name" class="field-label">Nama Lengkap *</label>
+                  <input type="text" id="order-name" class="field-input" placeholder="Masukkan nama Anda" required>
+                  <span class="field-error" id="err-name" aria-live="polite"></span>
+                </div>
+                <div class="field-group">
+                  <label for="order-contact" class="field-label">Email atau No. WhatsApp *</label>
+                  <input type="text" id="order-contact" class="field-input" placeholder="nama@email.com / 0812..." required>
+                  <span class="field-error" id="err-contact" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="form-row-2" style="margin-top: var(--space-sm);">
+                <div class="field-group">
+                  <label for="order-city" class="field-label">Kota Pengiriman</label>
+                  <select id="order-city" class="field-select">
+                    <option value="Jabodetabek (Gratis Pengiriman Demo)">Jabodetabek (Gratis Pengiriman Demo)</option>
+                    <option value="Bandung & Jawa Barat">Bandung &amp; Jawa Barat</option>
+                    <option value="Surabaya & Jawa Timur">Surabaya &amp; Jawa Timur</option>
+                    <option value="Yogyakarta & Jawa Tengah">Yogyakarta &amp; Jawa Tengah</option>
+                    <option value="Luar Pulau Jawa">Luar Pulau Jawa</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="order-service" class="field-label">Keperluan Pengajuan</label>
+                  <select id="order-service" class="field-select">
+                    <option value="Simulasi Pemesanan Unit Sofa">Simulasi Pemesanan Unit Sofa</option>
+                    <option value="Permintaan Sampel Kain & Kulit">Permintaan Sampel Kain &amp; Kulit</option>
+                    <option value="Konsultasi Tata Ruang & Dimensi">Konsultasi Tata Ruang &amp; Dimensi</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-group" style="margin-top: var(--space-sm);">
+                <label for="order-notes" class="field-label">Pesan atau Catatan Ruangan</label>
+                <textarea id="order-notes" class="field-textarea" placeholder="Tuliskan pertanyaan, warna pilihan, atau ukuran ruang tamu Anda..."></textarea>
+                <span class="field-error" id="err-notes" aria-live="polite"></span>
+              </div>
+
+              <div class="form-status-msg" id="form-status-msg" aria-live="polite"></div>
+
+              <div style="display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-md);">
+                <button type="submit" class="btn btn-primary">
+                  <i data-lucide="send" width="16" height="16" aria-hidden="true"></i>
+                  <span>Kirim Simulasi Pesanan</span>
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="resetOrderForm()">Bersihkan Formulir</button>
+              </div>
+            </form>
+
+            <div class="order-history-box" id="order-history-box" style="display: none;">
+              <span class="label-voice">Riwayat Simulasi Terkirim</span>
+              <div id="order-history-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <h2 class="footer-brand">Sofa Shop</h2>
+          <p class="footer-note">Katalog furniture sofa modern &amp; elegan. Proyek Tugas Pembuatan Website Kelompok 5 &mdash; Tema Produk dan Toko Online.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#beranda" onclick="navigateToSection('beranda', event)">Beranda</a>
+          <a href="#katalog" onclick="navigateToSection('katalog', event)">Katalog</a>
+          <a href="#tentang" onclick="navigateToSection('tentang', event)">Tentang Kami</a>
+          <a href="#kontak" onclick="navigateToSection('kontak', event)">Kontak</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Sofa Shop &bull; Kelompok 5 PTIK. Seluruh visual produk berupa ilustrasi vektor orisinal.</span>
+        <button type="button" class="btn btn-subtle" style="min-height: 36px; font-size: 0.7rem;" onclick="navigateToSection('beranda')">Kembali ke Atas</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DETAIL PRODUK -->
+  <div class="modal-backdrop" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-title" onclick="handleBackdropClick(event, 'product-modal')">
+    <div class="modal-dialog">
+      <div class="modal-top">
+        <span class="label-voice" id="modal-product-cat">Detail Produk</span>
+        <button type="button" class="modal-close-btn" aria-label="Tutup detail produk" onclick="closeModal('product-modal')">
+          <i data-lucide="x" width="18" height="18" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-content-grid">
+        <div class="modal-visual-box">
+          <div id="modal-svg-container" style="width: 100%; display: flex; justify-content: center;"></div>
+          <div class="dim-callout" id="modal-dim-callout">Dimensi: 215 &times; 88 &times; 78 cm</div>
+          <div style="width: 100%;">
+            <div class="field-label" style="margin-bottom: var(--space-xs);">Pilih Warna Pelapis</div>
+            <div class="product-swatches" id="modal-swatches"></div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title" id="modal-product-title" style="font-size: 1.75rem;">Nama Sofa</h2>
+          <p class="product-price" id="modal-product-price" style="font-size: 1.45rem; margin-block: var(--space-sm);">Rp 0</p>
+          <p id="modal-product-desc" style="color: var(--on-surface-variant); margin-top: 0;"></p>
+
+          <table class="spec-table">
+            <tbody>
+              <tr>
+                <th>Dimensi (P &times; L &times; T)</th>
+                <td id="spec-dim">-</td>
+              </tr>
+              <tr>
+                <th>Material Rangka</th>
+                <td id="spec-frame">-</td>
+              </tr>
+              <tr>
+                <th>Bantalan &amp; Busa</th>
+                <td id="spec-cushion">-</td>
+              </tr>
+              <tr>
+                <th>Garansi &amp; Fitur</th>
+                <td id="spec-warranty">-</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg);">
+            <button type="button" class="btn btn-primary" id="modal-order-btn" onclick="orderFromModal()">
+              <i data-lucide="shopping-bag" width="16" height="16" aria-hidden="true"></i>
+              <span>Simulasi Pesan</span>
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="closeModal('product-modal')">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KONFIRMASI PEMESANAN SIMULASI -->
+  <div class="modal-backdrop" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title" onclick="handleBackdropClick(event, 'confirm-modal')">
+    <div class="modal-dialog narrow">
+      <div class="modal-top">
+        <span class="label-voice" style="color: var(--positive);">Konfirmasi Simulasi Berhasil</span>
+        <button type="button" class="modal-close-btn" aria-label="Tutup konfirmasi" onclick="closeModal('confirm-modal')">
+          <i data-lucide="x" width="18" height="18" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div style="padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-md);">
+        <div style="display: inline-flex; align-items: center; gap: var(--space-sm); color: var(--positive);">
+          <i data-lucide="check-circle-2" width="24" height="24" aria-hidden="true"></i>
+          <h2 class="section-title" id="confirm-modal-title" style="font-size: 1.5rem;">Simulasi Pesanan Tercatat</h2>
+        </div>
+        <p style="margin: 0; color: var(--on-surface-variant);">
+          Terima kasih. Berikut adalah ringkasan pengajuan simulasi Anda. Tidak ada tagihan atau transaksi nyata yang diproses.
+        </p>
+        <div id="confirm-receipt-body" style="background-color: var(--surface-container-low); border: var(--rule-soft); padding: var(--space-md); font-size: 0.9rem; display: flex; flex-direction: column; gap: var(--space-xs);">
+          <!-- Receipt populated by JS -->
+        </div>
+        <div style="display: flex; justify-content: flex-end; padding-top: var(--space-sm);">
+          <button type="button" class="btn btn-primary" onclick="closeModal('confirm-modal')">Tutup &amp; Lanjutkan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i data-lucide="check" width="16" height="16" aria-hidden="true"></i>
+    <span id="toast-message">Sofa ditambahkan ke simulasi pesanan.</span>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // =========================================================================
+    // 1. DATA KATALOG PRODUK (8 MODEL SOFA DALAM 4 KATEGORI)
+    // =========================================================================
+    const SWATCH_PALETTE = {
+      linen:    { name: `Krem Linen`,       main: `var(--swatch-linen)`,    shade: `var(--swatch-linen-shade)`,    deep: `var(--swatch-linen-deep)` },
+      charcoal: { name: `Charcoal Gelap`,   main: `var(--swatch-charcoal)`, shade: `var(--swatch-charcoal-shade)`, deep: `var(--swatch-charcoal-deep)` },
+      taupe:    { name: `Taupe Hangat`,     main: `var(--swatch-taupe)`,    shade: `var(--swatch-taupe-shade)`,    deep: `var(--swatch-taupe-deep)` },
+      cognac:   { name: `Kulit Cognac`,     main: `var(--swatch-cognac)`,   shade: `var(--swatch-cognac-shade)`,   deep: `var(--swatch-cognac-deep)` },
+      slate:    { name: `Abu-abu Slate`,    main: `var(--swatch-slate)`,    shade: `var(--swatch-slate-shade)`,    deep: `var(--swatch-slate-deep)` },
+      cream:    { name: `Putih Krem`,       main: `var(--swatch-cream)`,    shade: `var(--swatch-cream-shade)`,    deep: `var(--swatch-cream-deep)` },
+      olive:    { name: `Hijau Zaitun`,     main: `var(--swatch-olive)`,    shade: `var(--swatch-olive-shade)`,    deep: `var(--swatch-olive-deep)` },
+      obsidian: { name: `Hitam Obsidian`,   main: `var(--swatch-obsidian)`, shade: `var(--swatch-obsidian-shade)`, deep: `var(--swatch-obsidian-deep)` }
+    };
+
+    const PRODUCTS = [
+      {
+        id: `aurelia-linen`,
+        name: `Aurelia 3-Seater Linen`,
+        category: `Sofa Minimalis`,
+        price: 8950000,
+        dimensions: `215 × 88 × 78 cm`,
+        frame: `Kayu Jati Solid Kiln-Dried`,
+        cushion: `Busa High-Resilience D32 + Dakron Silikon`,
+        warranty: `Garansi Rangka 5 Tahun • Sarung Bantal Lepas-Pasang`,
+        shortDesc: `Garis desain bersih bergaya Skandinavia dengan kain tenun linen bernapas dan kaki kayu jati meruncing.`,
+        fullDesc: `Aurelia dirancang untuk menghadirkan keseimbangan visual di ruang tamu modern. Tiga bantalan dudukan terpisah menjaga kepadatan tetap rata, sementara jarak kolong 16 cm memudahkan pembersihan lantai di bawah sofa.`,
+        swatches: [`linen`, `taupe`, `charcoal`],
+        shape: `scandi3`
+      },
+      {
+        id: `sora-loveseat`,
+        name: `Sora Low-Profile Loveseat`,
+        category: `Sofa Minimalis`,
+        price: 6450000,
+        dimensions: `165 × 84 × 76 cm`,
+        frame: `Kayu Mahoni Oven & Kaki Baja Matte`,
+        cushion: `Memory Foam Berlapis Katun-Linen`,
+        warranty: `Garansi Rangka 5 Tahun • Termasuk 2 Bantal Guling`,
+        shortDesc: `Proporsi kompak 2 dudukan untuk apartemen atau sudut baca, memadukan katun-linen lembut dan kaki baja ramping.`,
+        fullDesc: `Dengan lebar 165 cm dan sandaran lengan tipis, Sora memaksimalkan area duduk tanpa membebani ruang sempit. Cocok ditempatkan di ruang keluarga minimalis, studio kerja, maupun kamar utama.`,
+        swatches: [`cream`, `slate`, `charcoal`],
+        shape: `loveseat`
+      },
+      {
+        id: `verona-leather`,
+        name: `Verona Heritage Leather`,
+        category: `Sofa Kulit`,
+        price: 18500000,
+        dimensions: `228 × 94 × 80 cm`,
+        frame: `Kayu Oak Amerika & Pegas Baja`,
+        cushion: `Busa Latex Natural + Pocket Spring`,
+        warranty: `Garansi Kulit & Rangka 7 Tahun`,
+        shortDesc: `Kulit sapi full-grain berkarakter dengan jahitan tuft modern dan kaki blok kayu gelap yang kokoh.`,
+        fullDesc: `Verona memadukan ketangguhan kulit full-grain alami dengan detail jahitan dalam yang presisi. Semakin lama digunakan, permukaan kulit akan membentuk kilau patina alami yang memperkaya suasana ruang.`,
+        swatches: [`cognac`, `obsidian`, `taupe`],
+        shape: `heritage`
+      },
+      {
+        id: `valen-saddle`,
+        name: `Valen Cognac Saddle`,
+        category: `Sofa Kulit`,
+        price: 14800000,
+        dimensions: `205 × 90 × 79 cm`,
+        frame: `Baja Powder-Coated & Rangka Sungkai`,
+        cushion: `High-Density Foam + Lapisan Bulu Angsa Sintetis`,
+        warranty: `Garansi Rangka 5 Tahun • Perawatan Anti-Gores Ringan`,
+        shortDesc: `Sofa kulit bergaya mid-century dengan bantalan samping terintegrasi, jahitan sadel presisi, dan kaki besi minimalis.`,
+        fullDesc: `Didesain dengan sudut sandaran 104 derajat untuk kenyamanan bersantai jangka panjang, Valen menonjolkan detail jahitan tepi luar (saddle stitch) dan pelapis kulit semi-matte yang lembut saat disentuh.`,
+        swatches: [`charcoal`, `cognac`, `linen`],
+        shape: `midcentury`
+      },
+      {
+        id: `nordic-sectional`,
+        name: `Nordic Haven L-Sectional`,
+        category: `Sofa L / Sectional`,
+        price: 15900000,
+        dimensions: `285 × 175 × 82 cm`,
+        frame: `Kayu Solid Oven + Slat Karet Elastis`,
+        cushion: `Busa D34 Dual-Layer Anti-Kempes`,
+        warranty: `Garansi Rangka 5 Tahun • Posisi Chaise Reversible`,
+        shortDesc: `Konfigurasi sudut L luas berkapasitas 5 orang dengan chaise lounge panjang dan kain tenun anti-noda.`,
+        fullDesc: `Nordic Haven menjadi pusat berkumpul keluarga dengan satu sisi chaise lounge untuk meluruskan kaki sepenuhnya. Kain performance weave-nya membantu cairan tidak mudah meresap ke dalam serat.`,
+        swatches: [`linen`, `slate`, `charcoal`],
+        shape: `sectionalL`
+      },
+      {
+        id: `kanso-corner`,
+        name: `Kanso Grand Corner`,
+        category: `Sofa L / Sectional`,
+        price: 21200000,
+        dimensions: `310 × 190 × 75 cm`,
+        frame: `Kayu Oak Natural & Sungkai`,
+        cushion: `Down-Feather Blend + Core Foam`,
+        warranty: `Garansi Rangka 7 Tahun • Termasuk Side Tray Oak`,
+        shortDesc: `Sectional sudut asimetris bergaya Japandi rendah yang dilengkapi meja sisi kayu oak terintegrasi.`,
+        fullDesc: `Terinspirasi ketenangan arsitektur Japandi, Kanso memiliki siluet rendah yang menjaga garis pandang ruangan tetap lega. Panel kayu di ujung kiri berfungsi praktis sebagai tatakan cangkir atau buku.`,
+        swatches: [`cream`, `taupe`, `olive`],
+        shape: `japandiL`
+      },
+      {
+        id: `nuvola-modular`,
+        name: `Nuvola Cloud Modular`,
+        category: `Modular & Recliner`,
+        price: 16750000,
+        dimensions: `270 × 105 × 72 cm (Fleksibel)`,
+        frame: `Multiplex Keras & Pengait Baja Tersembunyi`,
+        cushion: `Multi-Density Cloud Foam + Kain Bouclé`,
+        warranty: `Garansi Struktur 5 Tahun • Tambah Modul Kapan Saja`,
+        shortDesc: `Terdiri dari 4 modul bebas susun dengan kain bouclé bertekstur awan dan dudukan ekstra dalam.`,
+        fullDesc: `Nuvola memberi kebebasan penuh menata ulang ruang tamu: susun memanjang sebagai sofa lurus, bentuk sudut L, atau pisahkan menjadi kursi santai individu menggunakan klip pengait bawah yang tersembunyi.`,
+        swatches: [`cream`, `linen`, `slate`],
+        shape: `modular`
+      },
+      {
+        id: `apex-recliner`,
+        name: `Apex Dual Power Recliner`,
+        category: `Modular & Recliner`,
+        price: 13900000,
+        dimensions: `198 × 96 × 102 cm`,
+        frame: `Mekanisme Baja Karbon & Kayu Solid`,
+        cushion: `Ergonomic Contoured Foam + Microfiber`,
+        warranty: `Garansi Motor 3 Tahun • Port USB-C Tersembunyi`,
+        shortDesc: `Sofa recliner elektrik dengan motor senyap untuk kemiringan sandaran hingga 145 derajat dan sandaran kepala tinggi.`,
+        fullDesc: `Dirancang bagi pencinta kenyamanan sinema rumah, Apex memungkinkan penyesuaian sudut kaki dan sandaran secara independen lewat tombol sentuh di sisi lengan bagian dalam.`,
+        swatches: [`charcoal`, `taupe`, `obsidian`],
+        shape: `recliner`
+      }
+    ];
+
+    // =========================================================================
+    // 2. STATE APLIKASI (DISINKRONKAN DENGAN notebookAppApi)
+    // =========================================================================
+    let appState = {
+      activeCategory: `Semua`,
+      searchQuery: ``,
+      sortOrder: `default`,
+      heroProductIdx: 0,
+      selectedSwatches: {}, // { productId: swatchKey }
+      cart: [],             // [{ id, swatch, qty }]
+      submittedOrders: []   // [{ orderCode, name, total, dateStr, itemCount }]
+    };
+
+    let activeModalProductId = null;
+    let toastTimer = null;
+
+    // Initialize default swatches
+    PRODUCTS.forEach(function(p) {
+      appState.selectedSwatches[p.id] = p.swatches[0];
+    });
+
+    // =========================================================================
+    // 3. FORMATTER & SVG VECTOR SOFA RENDERER
+    // =========================================================================
+    function formatRupiah(num) {
+      return `Rp ` + Number(num).toLocaleString(`id-ID`);
+    }
+
+    function buildSofaSVG(shape, swatchKey) {
+      const sw = SWATCH_PALETTE[swatchKey] || SWATCH_PALETTE.linen;
+      const cMain = sw.main;
+      const cShade = sw.shade;
+      const cDeep = sw.deep;
+
+      if (shape === `scandi3`) {
+        return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="152" rx="126" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+          <line x1="48" y1="126" x2="40" y2="150" stroke="var(--wood-oak)" stroke-width="6" stroke-linecap="round"/>
+          <line x1="272" y1="126" x2="280" y2="150" stroke="var(--wood-oak)" stroke-width="6" stroke-linecap="round"/>
+          <line x1="160" y1="126" x2="160" y2="149" stroke="var(--wood-oak)" stroke-width="5" stroke-linecap="round"/>
+          <rect x="34" y="114" width="252" height="14" rx="3" fill="var(--wood-oak)"/>
+          <rect x="36" y="42" width="248" height="58" rx="10" fill="${cShade}"/>
+          <rect x="46" y="48" width="73" height="48" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="123.5" y="48" width="73" height="48" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="201" y="48" width="73" height="48" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="26" y="68" width="22" height="48" rx="7" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="272" y="68" width="22" height="48" rx="7" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="46" y="92" width="73" height="24" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="123.5" y="92" width="73" height="24" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="201" y="92" width="73" height="24" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+        </svg>`;
+      }
+
+      if (shape === `loveseat`) {
+        return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="152" rx="100" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+          <line x1="72" y1="124" x2="66" y2="150" stroke="var(--metal-dark)" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="248" y1="124" x2="254" y2="150" stroke="var(--metal-dark)" stroke-width="4.5" stroke-linecap="round"/>
+          <rect x="64" y="48" width="192" height="58" rx="14" fill="${cShade}"/>
+          <rect x="74" y="54" width="82" height="46" rx="8" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="164" y="54" width="82" height="46" rx="8" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="54" y="72" width="20" height="50" rx="8" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="246" y="72" width="20" height="50" rx="8" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="74" y="94" width="172" height="26" rx="5" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <line x1="160" y1="94" x2="160" y2="120" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="64" y="120" width="192" height="6" rx="2" fill="var(--metal-dark)"/>
+        </svg>`;
+      }
+
+      if (shape === `heritage`) {
+        return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="152" rx="132" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+          <rect x="38" y="132" width="14" height="18" rx="2" fill="var(--wood-walnut)"/>
+          <rect x="268" y="132" width="14" height="18" rx="2" fill="var(--wood-walnut)"/>
+          <rect x="28" y="44" width="264" height="72" rx="12" fill="${cShade}" stroke="${cDeep}" stroke-width="1.2"/>
+          <circle cx="72" cy="66" r="2.2" fill="${cDeep}"/><circle cx="116" cy="66" r="2.2" fill="${cDeep}"/>
+          <circle cx="160" cy="66" r="2.2" fill="${cDeep}"/><circle cx="204" cy="66" r="2.2" fill="${cDeep}"/>
+          <circle cx="248" cy="66" r="2.2" fill="${cDeep}"/>
+          <circle cx="94" cy="82" r="2.2" fill="${cDeep}"/><circle cx="138" cy="82" r="2.2" fill="${cDeep}"/>
+          <circle cx="182" cy="82" r="2.2" fill="${cDeep}"/><circle cx="226" cy="82" r="2.2" fill="${cDeep}"/>
+          <rect x="22" y="64" width="30" height="68" rx="12" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="268" y="64" width="30" height="68" rx="12" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="52" y="96" width="106" height="24" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="162" y="96" width="106" height="24" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="34" y="120" width="252" height="14" rx="3" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+        </svg>`;
+      }
+
+      if (shape === `midcentury`) {
+        return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="152" rx="122" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+          <line x1="56" y1="124" x2="48" y2="150" stroke="var(--metal-dark)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="264" y1="124" x2="272" y2="150" stroke="var(--metal-dark)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="44" y="48" width="232" height="56" rx="6" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="54" y="54" width="103" height="44" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="163" y="54" width="103" height="44" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="36" y="72" width="18" height="46" rx="5" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="266" y="72" width="18" height="46" rx="5" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="54" y="94" width="103" height="24" rx="3" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="163" y="94" width="103" height="24" rx="3" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="44" y="118" width="232" height="8" rx="2" fill="var(--wood-walnut)"/>
+        </svg>`;
+      }
+
+      if (shape === `sectionalL`) {
+        return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="154" rx="138" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+          <rect x="34" y="130" width="8" height="18" fill="var(--wood-walnut)"/>
+          <rect x="190" y="130" width="8" height="18" fill="var(--wood-walnut)"/>
+          <rect x="282" y="138" width="8" height="14" fill="var(--wood-walnut)"/>
+          <rect x="26" y="44" width="268" height="56" rx="8" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="38" y="50" width="60" height="44" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="102" y="50" width="60" height="44" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="166" y="50" width="60" height="44" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="230" y="50" width="54" height="44" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="20" y="70" width="18" height="58" rx="6" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="282" y="70" width="18" height="68" rx="6" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="38" y="92" width="166" height="32" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <line x1="120" y1="92" x2="120" y2="124" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="204" y="92" width="78" height="48" rx="5" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="26" y="124" width="178" height="8" fill="${cDeep}" opacity="0.4"/>
+        </svg>`;
+      }
+
+      if (shape === `japandiL`) {
+        return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="154" rx="140" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+          <rect x="18" y="128" width="284" height="10" rx="2" fill="var(--wood-oak)"/>
+          <rect x="28" y="138" width="12" height="10" fill="var(--wood-walnut)"/>
+          <rect x="280" y="138" width="12" height="10" fill="var(--wood-walnut)"/>
+          <rect x="20" y="102" width="38" height="26" rx="2" fill="var(--wood-oak)" stroke="var(--wood-walnut)" stroke-width="1"/>
+          <rect x="58" y="54" width="236" height="48" rx="6" fill="${cShade}"/>
+          <rect x="66" y="58" width="70" height="40" rx="5" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="140" y="58" width="70" height="40" rx="5" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="214" y="58" width="70" height="40" rx="5" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="58" y="96" width="144" height="32" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="204" y="96" width="90" height="44" rx="4" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="292" y="72" width="12" height="56" rx="4" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+        </svg>`;
+      }
+
+      if (shape === `modular`) {
+        return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="152" rx="134" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+          <rect x="28" y="52" width="264" height="62" rx="18" fill="${cShade}"/>
+          <rect x="36" y="56" width="60" height="50" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="100" y="56" width="60" height="50" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="164" y="56" width="60" height="50" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="228" y="56" width="56" height="50" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+          <rect x="24" y="88" width="68" height="56" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="94" y="88" width="66" height="56" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="162" y="88" width="66" height="56" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+          <rect x="230" y="88" width="66" height="56" rx="14" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+        </svg>`;
+      }
+
+      // recliner
+      return `<svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="160" cy="154" rx="122" ry="7" fill="var(--outline-stone)" opacity="0.45"/>
+        <rect x="46" y="34" width="110" height="68" rx="12" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+        <rect x="164" y="34" width="110" height="68" rx="12" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+        <rect x="54" y="40" width="94" height="32" rx="8" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+        <rect x="172" y="40" width="94" height="32" rx="8" fill="${cMain}" stroke="${cDeep}" stroke-width="1"/>
+        <rect x="28" y="68" width="26" height="68" rx="9" fill="${cShade}" stroke="${cDeep}" stroke-width="1.2"/>
+        <rect x="266" y="68" width="26" height="68" rx="9" fill="${cShade}" stroke="${cDeep}" stroke-width="1.2"/>
+        <rect x="54" y="96" width="102" height="38" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+        <rect x="164" y="96" width="102" height="38" rx="6" fill="${cMain}" stroke="${cDeep}" stroke-width="1.2"/>
+        <rect x="58" y="132" width="94" height="14" rx="4" fill="${cDeep}"/>
+        <rect x="168" y="128" width="94" height="16" rx="4" fill="${cShade}" stroke="${cDeep}" stroke-width="1"/>
+      </svg>`;
+    }
+
+    // =========================================================================
+    // 4. PERSISTENSI STATE & INISIALISASI
+    // =========================================================================
+    async function saveState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+          await window.notebookAppApi.setAppState(appState);
+        }
+      } catch (e) {
+        // Ignore persistence errors safely
+      }
+    }
+
+    async function initApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (saved.activeCategory) appState.activeCategory = saved.activeCategory;
+            if (typeof saved.searchQuery === `string`) appState.searchQuery = saved.searchQuery;
+            if (saved.sortOrder) appState.sortOrder = saved.sortOrder;
+            if (typeof saved.heroProductIdx === `number`) appState.heroProductIdx = saved.heroProductIdx;
+            if (saved.selectedSwatches) {
+              appState.selectedSwatches = Object.assign({}, appState.selectedSwatches, saved.selectedSwatches);
+            }
+            if (Array.isArray(saved.cart)) appState.cart = saved.cart;
+            if (Array.isArray(saved.submittedOrders)) appState.submittedOrders = saved.submittedOrders;
+          }
+        }
+      } catch (e) {
+        // Use defaults if loading fails
+      }
+
+      // Sync UI inputs from restored state
+      const searchEl = document.getElementById(`catalog-search`);
+      if (searchEl) searchEl.value = appState.searchQuery;
+
+      const sortEl = document.getElementById(`catalog-sort`);
+      if (sortEl) sortEl.value = appState.sortOrder;
+
+      updateCategoryButtonsUI();
+      renderHeroFeature();
+      renderCatalog();
+      renderOrderSummary();
+      renderOrderHistory();
+      setupScrollObserver();
+
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    // =========================================================================
+    // 5. NAVIGASI & SCROLL REVEAL
+    // =========================================================================
+    function navigateToSection(sectionId, event) {
+      if (event) event.preventDefault();
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: `smooth`, block: `start` });
+      }
+      const links = document.querySelectorAll(`.nav-link`);
+      links.forEach(function(link) {
+        if (link.dataset.nav === sectionId) {
+          link.classList.add(`active`);
+        } else {
+          link.classList.remove(`active`);
+        }
+      });
+      // Close mobile menu after clicking
+      const navWrap = document.getElementById(`main-nav-wrapper`);
+      const menuBtn = document.getElementById(`mobile-menu-btn`);
+      if (navWrap && navWrap.classList.contains(`open`)) {
+        navWrap.classList.remove(`open`);
+        if (menuBtn) menuBtn.setAttribute(`aria-expanded`, `false`);
+      }
+    }
+
+    function toggleMobileMenu() {
+      const navWrap = document.getElementById(`main-nav-wrapper`);
+      const menuBtn = document.getElementById(`mobile-menu-btn`);
+      if (!navWrap || !menuBtn) return;
+      const isOpen = navWrap.classList.toggle(`open`);
+      menuBtn.setAttribute(`aria-expanded`, isOpen ? `true` : `false`);
+    }
+
+    function setupScrollObserver() {
+      const reveals = document.querySelectorAll(`.reveal`);
+      if (!(`IntersectionObserver` in window)) {
+        reveals.forEach(function(el) { el.classList.add(`visible`); });
+        return;
+      }
+      const obs = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(`visible`);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      reveals.forEach(function(el) {
+        obs.observe(el);
+      });
+    }
+
+    // =========================================================================
+    // 6. HERO SHOWCASE SWITCHER
+    // =========================================================================
+    function selectHeroFeature(idx) {
+      if (idx < 0 || idx >= PRODUCTS.length) return;
+      appState.heroProductIdx = idx;
+      renderHeroFeature();
+      saveState();
+    }
+
+    function renderHeroFeature() {
+      const product = PRODUCTS[appState.heroProductIdx] || PRODUCTS[0];
+      const swKey = appState.selectedSwatches[product.id] || product.swatches[0];
+      const stage = document.getElementById(`hero-svg-stage`);
+      const titleEl = document.getElementById(`hero-feature-title`);
+      const metaEl = document.getElementById(`hero-feature-meta`);
+
+      if (stage) stage.innerHTML = buildSofaSVG(product.shape, swKey);
+      if (titleEl) titleEl.textContent = product.name;
+      if (metaEl) metaEl.textContent = `${product.category} • ${formatRupiah(product.price)}`;
+
+      const btns = document.querySelectorAll(`.hero-switch-btn`);
+      btns.forEach(function(btn) {
+        const bIdx = Number(btn.dataset.heroIdx);
+        btn.classList.toggle(`active`, bIdx === appState.heroProductIdx);
+      });
+    }
+
+    // =========================================================================
+    // 7. KATALOG FILTER, PENCARIAN & RENDER KARTU PRODUK
+    // =========================================================================
+    function updateCategoryButtonsUI() {
+      const buttons = document.querySelectorAll(`.filter-btn`);
+      buttons.forEach(function(btn) {
+        btn.classList.toggle(`active`, btn.dataset.cat === appState.activeCategory);
+      });
+    }
+
+    function setCategory(cat) {
+      appState.activeCategory = cat;
+      updateCategoryButtonsUI();
+      renderCatalog();
+      saveState();
+    }
+
+    function setSearchQuery(val) {
+      appState.searchQuery = val;
+      renderCatalog();
+      saveState();
+    }
+
+    function setSortOrder(val) {
+      appState.sortOrder = val;
+      renderCatalog();
+      saveState();
+    }
+
+    function resetCatalogFilters() {
+      appState.activeCategory = `Semua`;
+      appState.searchQuery = ``;
+      appState.sortOrder = `default`;
+      const searchEl = document.getElementById(`catalog-search`);
+      if (searchEl) searchEl.value = ``;
+      const sortEl = document.getElementById(`catalog-sort`);
+      if (sortEl) sortEl.value = `default`;
+      updateCategoryButtonsUI();
+      renderCatalog();
+      saveState();
+    }
+
+    function selectProductSwatch(productId, swatchKey) {
+      appState.selectedSwatches[productId] = swatchKey;
+      renderCatalog();
+      renderHeroFeature();
+      if (activeModalProductId === productId) {
+        renderModalVisualAndSwatches(productId);
+      }
+      saveState();
+    }
+
+    function getFilteredProducts() {
+      const q = appState.searchQuery.trim().toLowerCase();
+      let list = PRODUCTS.filter(function(p) {
+        const matchCat = appState.activeCategory === `Semua` || p.category === appState.activeCategory;
+        if (!matchCat) return false;
+        if (!q) return true;
+        const haystack = `${p.name} ${p.category} ${p.shortDesc} ${p.frame} ${p.cushion}`.toLowerCase();
+        return haystack.indexOf(q) !== -1;
+      });
+
+      if (appState.sortOrder === `price-asc`) {
+        list = list.slice().sort(function(a, b) { return a.price - b.price; });
+      } else if (appState.sortOrder === `price-desc`) {
+        list = list.slice().sort(function(a, b) { return b.price - a.price; });
+      }
+      return list;
+    }
+
+    function renderCatalog() {
+      const grid = document.getElementById(`catalog-grid`);
+      const countLabel = document.getElementById(`catalog-count-label`);
+      if (!grid) return;
+
+      const items = getFilteredProducts();
+      if (countLabel) {
+        countLabel.textContent = `Menampilkan ${items.length} dari ${PRODUCTS.length} produk`;
+      }
+
+      if (items.length === 0) {
+        grid.innerHTML = `<div class="empty-catalog">
+          <p style="margin: 0; font-weight: 600; color: var(--on-surface);">Tidak ada sofa yang cocok dengan kata kunci atau filter Anda.</p>
+          <p style="margin: 0; color: var(--on-surface-variant); font-size: 0.9rem;">Coba gunakan kata kunci lain atau kembalikan ke semua kategori.</p>
+          <button type="button" class="btn btn-primary" onclick="resetCatalogFilters()">Reset Semua Filter</button>
+        </div>`;
+        return;
+      }
+
+      grid.innerHTML = items.map(function(p) {
+        const activeSwKey = appState.selectedSwatches[p.id] || p.swatches[0];
+        const activeSw = SWATCH_PALETTE[activeSwKey] || SWATCH_PALETTE.linen;
+
+        const swatchesHtml = p.swatches.map(function(swKey) {
+          const swObj = SWATCH_PALETTE[swKey];
+          const isActive = swKey === activeSwKey ? `active` : ``;
+          return `<button type="button" class="swatch-dot ${isActive}" style="background-color: ${swObj.main};" aria-label="Pilih warna ${swObj.name} untuk ${p.name}" title="${swObj.name}" onclick="selectProductSwatch('${p.id}', '${swKey}')"></button>`;
+        }).join(``);
+
+        return `<article class="product-card">
+          <div class="product-visual">
+            <span class="product-badge">${p.category}</span>
+            ${buildSofaSVG(p.shape, activeSwKey)}
+          </div>
+          <div class="product-body">
+            <div class="product-swatches">
+              ${swatchesHtml}
+              <span class="swatch-name-inline">${activeSw.name}</span>
+            </div>
+            <h3 class="product-title">${p.name}</h3>
+            <p class="product-desc">${p.shortDesc}</p>
+            <div class="product-meta-row">
+              <span class="product-price">${formatRupiah(p.price)}</span>
+              <span class="product-dim">${p.dimensions.split(` (`)[0]}</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn btn-secondary" onclick="openProductModal('${p.id}')">Lihat Detail</button>
+              <button type="button" class="btn btn-primary" onclick="addToSimulatedOrder('${p.id}')">Simulasi Pesan</button>
+            </div>
+          </div>
+        </article>`;
+      }).join(``);
+    }
+
+    // =========================================================================
+    // 8. MODAL DETAIL PRODUK & MODAL KONFIRMASI
+    // =========================================================================
+    function renderModalVisualAndSwatches(productId) {
+      const p = PRODUCTS.find(function(item) { return item.id === productId; });
+      if (!p) return;
+      const activeSwKey = appState.selectedSwatches[p.id] || p.swatches[0];
+      const activeSw = SWATCH_PALETTE[activeSwKey];
+
+      const svgContainer = document.getElementById(`modal-svg-container`);
+      if (svgContainer) {
+        svgContainer.innerHTML = buildSofaSVG(p.shape, activeSwKey);
+      }
+
+      const swWrap = document.getElementById(`modal-swatches`);
+      if (swWrap) {
+        const dots = p.swatches.map(function(swKey) {
+          const swObj = SWATCH_PALETTE[swKey];
+          const isActive = swKey === activeSwKey ? `active` : ``;
+          return `<button type="button" class="swatch-dot ${isActive}" style="background-color: ${swObj.main};" aria-label="Warna ${swObj.name}" title="${swObj.name}" onclick="selectProductSwatch('${p.id}', '${swKey}')"></button>`;
+        }).join(``);
+        swWrap.innerHTML = `${dots}<span class="swatch-name-inline">${activeSw.name}</span>`;
+      }
+    }
+
+    function openProductModal(productId) {
+      const p = PRODUCTS.find(function(item) { return item.id === productId; });
+      if (!p) return;
+      activeModalProductId = productId;
+
+      const setText = function(id, val) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      };
+
+      setText(`modal-product-cat`, p.category);
+      setText(`modal-product-title`, p.name);
+      setText(`modal-product-price`, formatRupiah(p.price));
+      setText(`modal-product-desc`, p.fullDesc);
+      setText(`modal-dim-callout`, `Dimensi Unit: ${p.dimensions}`);
+      setText(`spec-dim`, p.dimensions);
+      setText(`spec-frame`, p.frame);
+      setText(`spec-cushion`, p.cushion);
+      setText(`spec-warranty`, p.warranty);
+
+      renderModalVisualAndSwatches(productId);
+
+      const modal = document.getElementById(`product-modal`);
+      if (modal) modal.classList.add(`open`);
+    }
+
+    function orderFromModal() {
+      if (!activeModalProductId) return;
+      addToSimulatedOrder(activeModalProductId);
+      closeModal(`product-modal`);
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) modal.classList.remove(`open`);
+      if (modalId === `product-modal`) activeModalProductId = null;
+    }
+
+    function handleBackdropClick(event, modalId) {
+      if (event.target && event.target.id === modalId) {
+        closeModal(modalId);
+      }
+    }
+
+    document.addEventListener(`keydown`, function(e) {
+      if (e.key === `Escape`) {
+        closeModal(`product-modal`);
+        closeModal(`confirm-modal`);
+      }
+    });
+
+    // =========================================================================
+    // 9. SIMULASI PEMESANAN (KERANJANG & FORMULIR KONTAK)
+    // =========================================================================
+    function showToast(message) {
+      const toast = document.getElementById(`toast`);
+      const msgEl = document.getElementById(`toast-message`);
+      if (!toast || !msgEl) return;
+      msgEl.textContent = message;
+      toast.classList.add(`show`);
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() {
+        toast.classList.remove(`show`);
+      }, 3200);
+    }
+
+    function addToSimulatedOrder(productId) {
+      const p = PRODUCTS.find(function(item) { return item.id === productId; });
+      if (!p) return;
+      const swatch = appState.selectedSwatches[p.id] || p.swatches[0];
+
+      const existing = appState.cart.find(function(c) {
+        return c.id === productId && c.swatch === swatch;
+      });
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        appState.cart.push({ id: productId, swatch: swatch, qty: 1 });
+      }
+
+      renderOrderSummary();
+      saveState();
+      const swName = SWATCH_PALETTE[swatch] ? SWATCH_PALETTE[swatch].name : swatch;
+      showToast(`${p.name} (${swName}) ditambahkan ke daftar simulasi.`);
+    }
+
+    function updateCartQty(index, delta) {
+      if (index < 0 || index >= appState.cart.length) return;
+      appState.cart[index].qty += delta;
+      if (appState.cart[index].qty <= 0) {
+        appState.cart.splice(index, 1);
+      }
+      renderOrderSummary();
+      saveState();
+    }
+
+    function handleClearCart(btn) {
+      if (appState.cart.length === 0) return;
+      if (btn && btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `Klik lagi untuk hapus`;
+        setTimeout(function() {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.textContent = `Kosongkan`;
+          }
+        }, 3000);
+        return;
+      }
+      appState.cart = [];
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.textContent = `Kosongkan`;
+      }
+      renderOrderSummary();
+      saveState();
+      showToast(`Daftar simulasi pesanan telah dikosongkan.`);
+    }
+
+    function calculateCartTotal() {
+      return appState.cart.reduce(function(sum, item) {
+        const p = PRODUCTS.find(function(prod) { return prod.id === item.id; });
+        return sum + (p ? p.price * item.qty : 0);
+      }, 0);
+    }
+
+    function renderOrderSummary() {
+      const listEl = document.getElementById(`order-items-list`);
+      const totalEl = document.getElementById(`order-total-val`);
+      const countEl = document.getElementById(`header-cart-count`);
+      const clearBtn = document.getElementById(`clear-cart-btn`);
+
+      const totalQty = appState.cart.reduce(function(acc, c) { return acc + c.qty; }, 0);
+      if (countEl) countEl.textContent = String(totalQty);
+      if (clearBtn) clearBtn.style.display = appState.cart.length > 0 ? `inline-flex` : `none`;
+
+      if (totalEl) {
+        totalEl.textContent = formatRupiah(calculateCartTotal());
+      }
+      if (!listEl) return;
+
+      if (appState.cart.length === 0) {
+        listEl.innerHTML = `<div style="padding: var(--space-md); background-color: var(--background); border: var(--rule-soft); font-size: 0.88rem; color: var(--on-surface-variant);">
+          Belum ada unit sofa yang dipilih. Klik tombol <strong>Simulasi Pesan</strong> pada katalog di atas untuk memasukkan produk, atau langsung kirim pesan konsultasi melalui formulir di samping.
+        </div>`;
+        return;
+      }
+
+      listEl.innerHTML = appState.cart.map(function(item, idx) {
+        const p = PRODUCTS.find(function(prod) { return prod.id === item.id; });
+        if (!p) return ``;
+        const swName = SWATCH_PALETTE[item.swatch] ? SWATCH_PALETTE[item.swatch].name : item.swatch;
+        return `<div class="order-item-row">
+          <div>
+            <div class="order-item-name">${p.name}</div>
+            <div class="order-item-sub">Warna: ${swName} &bull; ${formatRupiah(p.price)}</div>
+          </div>
+          <div class="qty-controls">
+            <button type="button" class="qty-btn" aria-label="Kurangi jumlah ${p.name}" onclick="updateCartQty(${idx}, -1)">&minus;</button>
+            <span class="qty-num">${item.qty}</span>
+            <button type="button" class="qty-btn" aria-label="Tambah jumlah ${p.name}" onclick="updateCartQty(${idx}, 1)">+</button>
+          </div>
+        </div>`;
+      }).join(``);
+    }
+
+    function submitOrderForm(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById(`order-name`);
+      const contactInput = document.getElementById(`order-contact`);
+      const citySelect = document.getElementById(`order-city`);
+      const serviceSelect = document.getElementById(`order-service`);
+      const notesInput = document.getElementById(`order-notes`);
+
+      const errName = document.getElementById(`err-name`);
+      const errContact = document.getElementById(`err-contact`);
+      const statusMsg = document.getElementById(`form-status-msg`);
+
+      if (errName) errName.textContent = ``;
+      if (errContact) errContact.textContent = ``;
+      if (statusMsg) {
+        statusMsg.className = `form-status-msg`;
+        statusMsg.textContent = ``;
+      }
+
+      const nameVal = nameInput ? nameInput.value.trim() : ``;
+      const contactVal = contactInput ? contactInput.value.trim() : ``;
+      let hasError = false;
+
+      if (nameVal.length < 2) {
+        if (errName) errName.textContent = `Masukkan nama lengkap minimal 2 karakter.`;
+        hasError = true;
+      }
+      if (contactVal.length < 5) {
+        if (errContact) errContact.textContent = `Masukkan alamat email atau nomor WhatsApp yang valid.`;
+        hasError = true;
+      }
+
+      if (hasError) {
+        if (statusMsg) {
+          statusMsg.className = `form-status-msg error`;
+          statusMsg.textContent = `Mohon lengkapi kolom wajib di atas sebelum mengirim simulasi.`;
+        }
+        return;
+      }
+
+      const total = calculateCartTotal();
+      const totalItems = appState.cart.reduce(function(acc, c) { return acc + c.qty; }, 0);
+      const orderCode = `SIM-${String(Math.floor(1000 + Math.random() * 9000))}`;
+      const cityVal = citySelect ? citySelect.value : `-`;
+      const serviceVal = serviceSelect ? serviceSelect.value : `-`;
+      const notesVal = notesInput && notesInput.value.trim() ? notesInput.value.trim() : `Tidak ada catatan tambahan.`;
+
+      const itemsSummaryHtml = appState.cart.length > 0
+        ? appState.cart.map(function(item) {
+            const p = PRODUCTS.find(function(prod) { return prod.id === item.id; });
+            const swName = SWATCH_PALETTE[item.swatch] ? SWATCH_PALETTE[item.swatch].name : item.swatch;
+            return `<div>&bull; ${p ? p.name : item.id} (${swName}) &times; ${item.qty} &mdash; <strong>${formatRupiah(p ? p.price * item.qty : 0)}</strong></div>`;
+          }).join(``)
+        : `<div>&bull; Pengajuan konsultasi / pertanyaan tanpa item sofa terpilih.</div>`;
+
+      const receiptEl = document.getElementById(`confirm-receipt-body`);
+      if (receiptEl) {
+        receiptEl.innerHTML = `
+          <div><strong>Kode Simulasi:</strong> ${orderCode}</div>
+          <div><strong>Pemesan:</strong> ${escapeHtml(nameVal)} (${escapeHtml(contactVal)})</div>
+          <div><strong>Keperluan:</strong> ${escapeHtml(serviceVal)}</div>
+          <div><strong>Wilayah:</strong> ${escapeHtml(cityVal)}</div>
+          <div style="border-top: var(--rule-soft); padding-top: var(--space-xs); margin-top: var(--space-xs);"><strong>Rincian Unit:</strong></div>
+          ${itemsSummaryHtml}
+          <div style="border-top: var(--rule-soft); padding-top: var(--space-xs); margin-top: var(--space-xs);"><strong>Estimasi Total:</strong> ${formatRupiah(total)}</div>
+          <div><strong>Catatan:</strong> ${escapeHtml(notesVal)}</div>
+        `;
+      }
+
+      appState.submittedOrders.unshift({
+        orderCode: orderCode,
+        name: nameVal,
+        total: total,
+        itemCount: totalItems,
+        service: serviceVal
+      });
+      if (appState.submittedOrders.length > 4) {
+        appState.submittedOrders = appState.submittedOrders.slice(0, 4);
+      }
+
+      renderOrderHistory();
+      saveState();
+
+      const confirmModal = document.getElementById(`confirm-modal`);
+      if (confirmModal) confirmModal.classList.add(`open`);
+
+      if (statusMsg) {
+        statusMsg.className = `form-status-msg success`;
+        statusMsg.textContent = `Simulasi ${orderCode} berhasil dicatat.`;
+      }
+      showToast(`Simulasi ${orderCode} berhasil dikirim!`);
+    }
+
+    function resetOrderForm() {
+      const form = document.getElementById(`order-form`);
+      if (form) form.reset();
+      const errName = document.getElementById(`err-name`);
+      const errContact = document.getElementById(`err-contact`);
+      const statusMsg = document.getElementById(`form-status-msg`);
+      if (errName) errName.textContent = ``;
+      if (errContact) errContact.textContent = ``;
+      if (statusMsg) {
+        statusMsg.className = `form-status-msg`;
+        statusMsg.textContent = ``;
+      }
+    }
+
+    function renderOrderHistory() {
+      const box = document.getElementById(`order-history-box`);
+      const list = document.getElementById(`order-history-list`);
+      if (!box || !list) return;
+
+      if (appState.submittedOrders.length === 0) {
+        box.style.display = `none`;
+        return;
+      }
+      box.style.display = `flex`;
+      list.innerHTML = appState.submittedOrders.map(function(o) {
+        const detail = o.itemCount > 0 ? `${o.itemCount} unit • ${formatRupiah(o.total)}` : o.service;
+        return `<div class="history-chip">
+          <span><strong>${o.orderCode}</strong> &mdash; ${escapeHtml(o.name)}</span>
+          <span style="color: var(--on-surface-variant);">${escapeHtml(detail)}</span>
+        </div>`;
+      }).join(``);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, `&amp;`)
+        .replace(/</g, `&lt;`)
+        .replace(/>/g, `&gt;`)
+        .replace(/"/g, `&quot;`)
+        .replace(/'/g, `&#39;`);
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
