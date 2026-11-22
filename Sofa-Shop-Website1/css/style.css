@@ -204,9 +204,9 @@ button, input, select, textarea { font-family: inherit; }
     background-color: var(--background);
     border-bottom: var(--rule-soft);
     padding-block: var(--space-md);
-    position: fixed;
 }
 .header-inner {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
