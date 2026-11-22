@@ -206,7 +206,6 @@ button, input, select, textarea { font-family: inherit; }
     padding-block: var(--space-md);
 }
 .header-inner {
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
