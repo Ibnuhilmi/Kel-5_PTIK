@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="dashboard">
+  <meta name="design-style" content="atelier">
+  <title>Sofa Shop — Katalog Furniture Sofa Modern &amp; Elegan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header & Navigasi -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#beranda" class="brand-link" onclick="navigateToSection('beranda', event)">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M4 13V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"/>
+            <path d="M2 12a2 2 0 0 1 2 2v3h16v-3a2 2 0 0 1 2-2"/>
+            <path d="M6 17v2M18 17v2"/>
+          </svg>
+        </span>
+        <span class="brand-text-group">
+          <span class="brand-name">Sofa Shop</span>
+          <span class="brand-sub">Koleksi Kelompok 5</span>
+        </span>
+      </a>
+
+      <button type="button" class="mobile-menu-toggle" id="mobile-menu-btn" aria-expanded="false" aria-controls="main-nav-wrapper" aria-label="Buka menu navigasi" onclick="toggleMobileMenu()">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-wrapper" id="main-nav-wrapper">
+        <nav aria-label="Navigasi Utama">
+          <ul class="nav-list">
+            <li><a href="#beranda" class="nav-link active" data-nav="beranda" onclick="navigateToSection('beranda', event)">Beranda</a></li>
+            <li><a href="#katalog" class="nav-link" data-nav="katalog" onclick="navigateToSection('katalog', event)">Katalog</a></li>
+            <li><a href="#tentang" class="nav-link" data-nav="tentang" onclick="navigateToSection('tentang', event)">Tentang Kami</a></li>
+            <li><a href="#kontak" class="nav-link" data-nav="kontak" onclick="navigateToSection('kontak', event)">Kontak</a></li>
+          </ul>
+        </nav>
+
+        <button type="button" class="cart-nav-btn" onclick="navigateToSection('kontak')">
+          <i data-lucide="shopping-bag" width="16" height="16" aria-hidden="true"></i>
+          <span>Pesanan</span>
+          <span class="cart-count-pill" id="header-cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- BAGIAN 1: BERANDA (HOME) -->
+    <section id="beranda" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <span class="label-voice">Koleksi Furnishing Terkurasi &bull; Kelompok 5 PTIK</span>
+            <h1 class="display-title">Kenyamanan <em>Arsitektural</em> untuk Ruang Hidup Anda</h1>
+            <p class="lede">
+              Sofa Shop menghadirkan katalog kurasi sofa modern yang memadukan proporsi minimalis, material kayu solid tersertifikasi, serta palet netral abadi yang menenangkan ruang keluarga Anda.
+            </p>
+            <div class="hero-actions">
+              <a href="#katalog" class="btn btn-primary" onclick="navigateToSection('katalog', event)">
+                <span>Jelajahi Koleksi</span>
+                <i data-lucide="arrow-down-right" width="16" height="16" aria-hidden="true"></i>
+              </a>
+              <a href="#tentang" class="btn btn-secondary" onclick="navigateToSection('tentang', event)">Tentang Kami</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="ruled-metric">
+                <div class="metric-val">8 Model</div>
+                <div class="metric-label">Kurasi Sofa</div>
+                <div class="metric-note">4 kategori ruang tamu</div>
+              </div>
+              <div class="ruled-metric">
+                <div class="metric-val">5&ndash;7 Th</div>
+                <div class="metric-label">Garansi Rangka</div>
+                <div class="metric-note">Kayu solid kiln-dried</div>
+              </div>
+              <div class="ruled-metric">
+                <div class="metric-val">24 Varian</div>
+                <div class="metric-label">Opsi Pelapis</div>
+                <div class="metric-note">Pratinjau warna langsung</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-plate reveal">
+            <div class="hero-plate-stage" id="hero-svg-stage">
+              <!-- Rendered dynamically by JS -->
+            </div>
+            <div class="hero-plate-caption">
+              <div>
+                <p class="hero-plate-title" id="hero-feature-title">Aurelia 3-Seater Linen</p>
+                <span class="hero-plate-meta" id="hero-feature-meta">Sofa Minimalis &bull; Rp 8.950.000</span>
+              </div>
+              <div class="hero-switcher" role="group" aria-label="Pilih sorotan sofa unggulan">
+                <button type="button" class="hero-switch-btn active" data-hero-idx="0" onclick="selectHeroFeature(0)">Minimalis</button>
+                <button type="button" class="hero-switch-btn" data-hero-idx="2" onclick="selectHeroFeature(2)">Kulit</button>
+                <button type="button" class="hero-switch-btn" data-hero-idx="4" onclick="selectHeroFeature(4)">Sectional</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pillars-strip reveal">
+          <article class="pillar-item">
+            <div class="pillar-head">
+              <i data-lucide="layers" width="18" height="18" aria-hidden="true"></i>
+              <h2 class="pillar-title">Konstruksi Kayu Solid Oven</h2>
+            </div>
+            <p class="pillar-desc">Setiap rangka menggunakan kayu jati, mahoni, atau oak pilihan yang dikeringkan presisi untuk stabilitas jangka panjang.</p>
+          </article>
+          <article class="pillar-item">
+            <div class="pillar-head">
+              <i data-lucide="sparkles" width="18" height="18" aria-hidden="true"></i>
+              <h2 class="pillar-title">Tekstil &amp; Kulit Terkurasi</h2>
+            </div>
+            <p class="pillar-desc">Pilihan linen bernapas, kain bouclé lembut, hingga kulit full-grain dengan warna krem, taupe, abu-abu, dan charcoal.</p>
+          </article>
+          <article class="pillar-item">
+            <div class="pillar-head">
+              <i data-lucide="clipboard-check" width="18" height="18" aria-hidden="true"></i>
+              <h2 class="pillar-title">Simulasi Pesan Interaktif</h2>
+            </div>
+            <p class="pillar-desc">Bandingkan dimensi, coba warna pelapis secara visual, dan uji alur pemesanan simulasi tanpa transaksi sungguhan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 2: KATALOG PRODUK (MAIN CONTENT) -->
+    <section id="katalog" class="catalog-section">
+      <div class="container">
+        <div class="section-header-row reveal">
+          <div class="section-header-copy">
+            <span class="label-voice">02 / Katalog Produk</span>
+            <h2 class="section-title">Kurasi Sofa <em>Modern</em> &amp; Elegan</h2>
+            <p class="lede">Saring berdasarkan tipe ruang, ubah warna kain secara langsung pada kartu, atau buka spesifikasi lengkap setiap unit.</p>
+          </div>
+        </div>
+
+        <div class="catalog-toolbar reveal">
+          <div class="filter-pills" role="group" aria-label="Filter kategori sofa" id="category-filters">
+            <button type="button" class="filter-btn active" data-cat="Semua" onclick="setCategory('Semua')">Semua (8)</button>
+            <button type="button" class="filter-btn" data-cat="Sofa Minimalis" onclick="setCategory('Sofa Minimalis')">Sofa Minimalis (2)</button>
+            <button type="button" class="filter-btn" data-cat="Sofa Kulit" onclick="setCategory('Sofa Kulit')">Sofa Kulit (2)</button>
+            <button type="button" class="filter-btn" data-cat="Sofa L / Sectional" onclick="setCategory('Sofa L / Sectional')">Sofa L / Sectional (2)</button>
+            <button type="button" class="filter-btn" data-cat="Modular & Recliner" onclick="setCategory('Modular & Recliner')">Modular &amp; Recliner (2)</button>
+          </div>
+
+          <div class="toolbar-controls">
+            <div class="field-group">
+              <label for="catalog-search" class="field-label">Cari Model atau Material</label>
+              <input type="search" id="catalog-search" class="field-input" placeholder="Contoh: linen, kulit, jati, bouclé..." oninput="setSearchQuery(this.value)">
+            </div>
+            <div class="field-group">
+              <label for="catalog-sort" class="field-label">Urutkan Harga</label>
+              <select id="catalog-sort" class="field-select" onchange="setSortOrder(this.value)">
+                <option value="default">Urutan Kurasi</option>
+                <option value="price-asc">Harga: Terendah ke Tertinggi</option>
+                <option value="price-desc">Harga: Tertinggi ke Terendah</option>
+              </select>
+            </div>
+            <div class="catalog-count" id="catalog-count-label" aria-live="polite">Menampilkan 8 dari 8 produk</div>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalog-grid">
+          <!-- Product cards injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 3: TENTANG KAMI (ABOUT US) -->
+    <section id="tentang" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-story reveal">
+            <div>
+              <span class="label-voice">03 / Tentang Kami</span>
+              <h2 class="section-title" style="margin-top: var(--space-xs);">Filosofi <em>Ketenangan</em> dalam Setiap Jahitan</h2>
+            </div>
+            <p class="lede">
+              Sofa Shop lahir sebagai proyek kurasi digital Kelompok 5 untuk menghadirkan pengalaman memilih furnitur ruang tamu yang tenang, informatif, dan transparan secara teknis.
+            </p>
+            <p>
+              Kami percaya sebuah sofa bukan sekadar tempat duduk, melainkan jangkar visual bagi ruang hidup. Karena itu, seluruh koleksi kami dirancang dalam palet krem hangat, putih murni, abu-abu lembut, dan charcoal yang mudah menyatu dengan arsitektur interior modern maupun klasik.
+            </p>
+
+            <div class="material-list">
+              <div class="material-item">
+                <h3>Rangka &amp; Sambungan Presisi</h3>
+                <p>Kombinasi kayu jati, oak, dan mahoni bersertifikat dengan sambungan pasak dan sekrup baja agar tidak berderit meski dipakai bertahun-tahun.</p>
+              </div>
+              <div class="material-item">
+                <h3>Kenyamanan Ergonomis Berlapis</h3>
+                <p>Lapisan busa High-Resilience D32 dipadukan dengan pegas saku (pocket spring) dan dakron silikon untuk dukungan tulang belakang yang seimbang.</p>
+              </div>
+              <div class="material-item">
+                <h3>Transparansi Dimensi &amp; Perawatan</h3>
+                <p>Setiap kartu katalog menyertakan ukuran akurat (P &times; L &times; T) dan jenis pelapis agar pembeli dapat mencocokkan sofa dengan denah rumah.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="team-panel reveal" aria-label="Profil Pengelola Kelompok 5">
+            <div>
+              <span class="label-voice">Profil Pengelola Proyek</span>
+              <h3 class="section-title" style="font-size: 1.55rem; margin-top: var(--space-xs);">Kelompok 5 &mdash; Tugas Website PTIK</h3>
+            </div>
+
+            <div class="project-id-grid">
+              <div>
+                <div class="id-item-label">Kelompok</div>
+                <div class="id-item-val">Kelompok 5</div>
+              </div>
+              <div>
+                <div class="id-item-label">Tema Website</div>
+                <div class="id-item-val">Produk &amp; Toko Online</div>
+              </div>
+              <div>
+                <div class="id-item-label">Nama Website</div>
+                <div class="id-item-val">Sofa Shop</div>
+              </div>
+              <div>
+                <div class="id-item-label">Teknologi</div>
+                <div class="id-item-val">HTML5, CSS3, Vanilla JS</div>
+              </div>
+            </div>
+
+            <div class="team-table-wrap">
+              <table class="team-table">
+                <thead>
+                  <tr>
+                    <th>Peran Kelompok</th>
+                    <th>Kontribusi &amp; Bagian yang Dikerjakan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ketua Kelompok</td>
+                    <td>Koordinasi proyek, struktur 4 bagian navigasi, perancangan Beranda, dan penyelarasan alur presentasi.</td>
+                  </tr>
+                  <tr>
+                    <td>Desainer UI/UX</td>
+                    <td>Penentuan palet Krem&ndash;Putih&ndash;Charcoal, tipografi Playfair Display, serta tata letak responsif desktop &amp; mobile.</td>
+                  </tr>
+                  <tr>
+                    <td>Kurator Konten</td>
+                    <td>Penulisan deskripsi, spesifikasi teknis 8 model sofa, pengelompokan 4 kategori, dan bagian Tentang Kami.</td>
+                  </tr>
+                  <tr>
+                    <td>Pengembang Interaktif</td>
+                    <td>Logika filter katalog tanpa reload, modal detail produk, swatch warna dinamis, serta simulasi pemesanan.</td>
+                  </tr>
+                  <tr>
+                    <td>Penguji &amp; Dokumentasi</td>
+                    <td>Pengujian tombol, responsivitas layar, validasi formulir kontak, serta penyusunan dokumentasi proyek.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 4: KONTAK & SIMULASI PEMESANAN -->
+    <section id="kontak" class="contact-section">
+      <div class="container">
+        <div class="section-header-row reveal">
+          <div class="section-header-copy">
+            <span class="label-voice">04 / Kontak &amp; Pemesanan</span>
+            <h2 class="section-title">Konsultasi &amp; <em>Simulasi</em> Pesanan</h2>
+            <p class="lede">Tinjau daftar sofa yang Anda pilih, sesuaikan jumlahnya, lalu kirim formulir untuk menguji konfirmasi pemesanan secara interaktif.</p>
+          </div>
+        </div>
+
+        <div class="demo-notice reveal" role="note">
+          <i data-lucide="info" width="20" height="20" aria-hidden="true" style="flex-shrink: 0; color: var(--secondary); margin-top: 2px;"></i>
+          <div>
+            <strong>Keterangan Fitur Demo / Simulasi:</strong> Sesuai ketentuan proyek Kelompok 5, seluruh fitur keranjang, perhitungan estimasi biaya, dan pengiriman formulir pada halaman ini merupakan <em>simulasi antarmuka</em> dan tidak memproses pembayaran atau transaksi keuangan sungguhan.
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Simulated Order List & Showroom Info -->
+          <div>
+            <div class="order-box reveal" id="order-summary-panel">
+              <div class="order-box-header">
+                <h3 class="order-box-title">Daftar Simulasi Pesanan</h3>
+                <button type="button" class="btn btn-subtle" id="clear-cart-btn" style="min-height: 36px; padding-inline: var(--space-sm); font-size: 0.7rem;" onclick="handleClearCart(this)">Kosongkan</button>
+              </div>
+
+              <div class="order-items-list" id="order-items-list">
+                <!-- Rendered by JS -->
+              </div>
+
+              <div class="order-total-row">
+                <span class="label-voice" style="color: var(--on-surface-variant);">Estimasi Total Simulasi</span>
+                <span class="order-total-val" id="order-total-val">Rp 0</span>
+              </div>
+            </div>
+
+            <div class="showroom-card reveal">
+              <span class="label-voice">Showroom &amp; Informasi Kontak</span>
+              <div class="contact-info-list">
+                <div class="contact-info-item">
+                  <i data-lucide="map-pin" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Showroom Simulasi Jakarta:</strong> Jl. Kemang Raya No. 48, Jakarta Selatan 12730</span>
+                </div>
+                <div class="contact-info-item">
+                  <i data-lucide="clock" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Jam Kunjungan:</strong> Senin &ndash; Minggu, 10.00 &ndash; 20.00 WIB</span>
+                </div>
+                <div class="contact-info-item">
+                  <i data-lucide="mail" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Email Layanan:</strong> halo@sofashop-kelompok5.example.com</span>
+                </div>
+                <div class="contact-info-item">
+                  <i data-lucide="phone" width="18" height="18" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px;"></i>
+                  <span><strong>Telepon Konsultasi:</strong> (021) 555-0195 (Nomor Simulasi)</span>
+                </div>
+              </div>
+
+              <div class="showroom-map-svg">
+                <svg viewBox="0 0 420 150" width="100%" aria-label="Denah zona galeri Showroom Sofa Shop">
+                  <rect x="6" y="6" width="408" height="138" fill="var(--surface-white)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <rect x="18" y="18" width="115" height="65" fill="var(--surface-container-low)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <text x="75" y="54" text-anchor="middle" font-size="10" fill="var(--on-surface)" font-weight="600">ZONA MINIMALIS</text>
+
+                  <rect x="145" y="18" width="120" height="65" fill="var(--surface-container-low)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <text x="205" y="54" text-anchor="middle" font-size="10" fill="var(--on-surface)" font-weight="600">GALERI KULIT</text>
+
+                  <rect x="277" y="18" width="125" height="65" fill="var(--surface-container-low)" stroke="var(--outline-stone)" stroke-width="1"/>
+                  <text x="339" y="54" text-anchor="middle" font-size="10" fill="var(--on-surface)" font-weight="600">LOUNGE SECTIONAL</text>
+
+                  <rect x="18" y="95" width="247" height="36" fill="var(--background)" stroke="var(--outline)" stroke-width="1"/>
+                  <text x="141" y="117" text-anchor="middle" font-size="10" fill="var(--secondary)" font-weight="600">MEJA KONSULTASI &amp; SAMPEL KAIN</text>
+
+                  <rect x="277" y="95" width="125" height="36" fill="var(--primary)"/>
+                  <text x="339" y="117" text-anchor="middle" font-size="10" fill="var(--on-primary)" font-weight="600">PINTU MASUK</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact & Order Form -->
+          <div class="contact-form-card reveal">
+            <div>
+              <span class="label-voice">Formulir Interaktif</span>
+              <h3 class="section-title" style="font-size: 1.55rem; margin-top: var(--space-xs);">Kirim Pesan atau Simulasi Pesanan</h3>
+            </div>
+
+            <form id="order-form" novalidate onsubmit="submitOrderForm(event)">
+              <div class="form-row-2">
+                <div class="field-group">
+                  <label for="order-name" class="field-label">Nama Lengkap *</label>
+                  <input type="text" id="order-name" class="field-input" placeholder="Masukkan nama Anda" required>
+                  <span class="field-error" id="err-name" aria-live="polite"></span>
+                </div>
+                <div class="field-group">
+                  <label for="order-contact" class="field-label">Email atau No. WhatsApp *</label>
+                  <input type="text" id="order-contact" class="field-input" placeholder="nama@email.com / 0812..." required>
+                  <span class="field-error" id="err-contact" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="form-row-2" style="margin-top: var(--space-sm);">
+                <div class="field-group">
+                  <label for="order-city" class="field-label">Kota Pengiriman</label>
+                  <select id="order-city" class="field-select">
+                    <option value="Jabodetabek (Gratis Pengiriman Demo)">Jabodetabek (Gratis Pengiriman Demo)</option>
+                    <option value="Bandung & Jawa Barat">Bandung &amp; Jawa Barat</option>
+                    <option value="Surabaya & Jawa Timur">Surabaya &amp; Jawa Timur</option>
+                    <option value="Yogyakarta & Jawa Tengah">Yogyakarta &amp; Jawa Tengah</option>
+                    <option value="Luar Pulau Jawa">Luar Pulau Jawa</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="order-service" class="field-label">Keperluan Pengajuan</label>
+                  <select id="order-service" class="field-select">
+                    <option value="Simulasi Pemesanan Unit Sofa">Simulasi Pemesanan Unit Sofa</option>
+                    <option value="Permintaan Sampel Kain & Kulit">Permintaan Sampel Kain &amp; Kulit</option>
+                    <option value="Konsultasi Tata Ruang & Dimensi">Konsultasi Tata Ruang &amp; Dimensi</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-group" style="margin-top: var(--space-sm);">
+                <label for="order-notes" class="field-label">Pesan atau Catatan Ruangan</label>
+                <textarea id="order-notes" class="field-textarea" placeholder="Tuliskan pertanyaan, warna pilihan, atau ukuran ruang tamu Anda..."></textarea>
+                <span class="field-error" id="err-notes" aria-live="polite"></span>
+              </div>
+
+              <div class="form-status-msg" id="form-status-msg" aria-live="polite"></div>
+
+              <div style="display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-md);">
+                <button type="submit" class="btn btn-primary">
+                  <i data-lucide="send" width="16" height="16" aria-hidden="true"></i>
+                  <span>Kirim Simulasi Pesanan</span>
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="resetOrderForm()">Bersihkan Formulir</button>
+              </div>
+            </form>
+
+            <div class="order-history-box" id="order-history-box" style="display: none;">
+              <span class="label-voice">Riwayat Simulasi Terkirim</span>
+              <div id="order-history-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <h2 class="footer-brand">Sofa Shop</h2>
+          <p class="footer-note">Katalog furniture sofa modern &amp; elegan. Proyek Tugas Pembuatan Website Kelompok 5 &mdash; Tema Produk dan Toko Online.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#beranda" onclick="navigateToSection('beranda', event)">Beranda</a>
+          <a href="#katalog" onclick="navigateToSection('katalog', event)">Katalog</a>
+          <a href="#tentang" onclick="navigateToSection('tentang', event)">Tentang Kami</a>
+          <a href="#kontak" onclick="navigateToSection('kontak', event)">Kontak</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Sofa Shop &bull; Kelompok 5 PTIK. Seluruh visual produk berupa ilustrasi vektor orisinal.</span>
+        <button type="button" class="btn btn-subtle" style="min-height: 36px; font-size: 0.7rem;" onclick="navigateToSection('beranda')">Kembali ke Atas</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DETAIL PRODUK -->
+  <div class="modal-backdrop" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-title" onclick="handleBackdropClick(event, 'product-modal')">
+    <div class="modal-dialog">
+      <div class="modal-top">
+        <span class="label-voice" id="modal-product-cat">Detail Produk</span>
+        <button type="button" class="modal-close-btn" aria-label="Tutup detail produk" onclick="closeModal('product-modal')">
+          <i data-lucide="x" width="18" height="18" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-content-grid">
+        <div class="modal-visual-box">
+          <div id="modal-svg-container" style="width: 100%; display: flex; justify-content: center;"></div>
+          <div class="dim-callout" id="modal-dim-callout">Dimensi: 215 &times; 88 &times; 78 cm</div>
+          <div style="width: 100%;">
+            <div class="field-label" style="margin-bottom: var(--space-xs);">Pilih Warna Pelapis</div>
+            <div class="product-swatches" id="modal-swatches"></div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title" id="modal-product-title" style="font-size: 1.75rem;">Nama Sofa</h2>
+          <p class="product-price" id="modal-product-price" style="font-size: 1.45rem; margin-block: var(--space-sm);">Rp 0</p>
+          <p id="modal-product-desc" style="color: var(--on-surface-variant); margin-top: 0;"></p>
+
+          <table class="spec-table">
+            <tbody>
+              <tr>
+                <th>Dimensi (P &times; L &times; T)</th>
+                <td id="spec-dim">-</td>
+              </tr>
+              <tr>
+                <th>Material Rangka</th>
+                <td id="spec-frame">-</td>
+              </tr>
+              <tr>
+                <th>Bantalan &amp; Busa</th>
+                <td id="spec-cushion">-</td>
+              </tr>
+              <tr>
+                <th>Garansi &amp; Fitur</th>
+                <td id="spec-warranty">-</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg);">
+            <button type="button" class="btn btn-primary" id="modal-order-btn" onclick="orderFromModal()">
+              <i data-lucide="shopping-bag" width="16" height="16" aria-hidden="true"></i>
+              <span>Simulasi Pesan</span>
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="closeModal('product-modal')">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KONFIRMASI PEMESANAN SIMULASI -->
+  <div class="modal-backdrop" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title" onclick="handleBackdropClick(event, 'confirm-modal')">
+    <div class="modal-dialog narrow">
+      <div class="modal-top">
+        <span class="label-voice" style="color: var(--positive);">Konfirmasi Simulasi Berhasil</span>
+        <button type="button" class="modal-close-btn" aria-label="Tutup konfirmasi" onclick="closeModal('confirm-modal')">
+          <i data-lucide="x" width="18" height="18" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div style="padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-md);">
+        <div style="display: inline-flex; align-items: center; gap: var(--space-sm); color: var(--positive);">
+          <i data-lucide="check-circle-2" width="24" height="24" aria-hidden="true"></i>
+          <h2 class="section-title" id="confirm-modal-title" style="font-size: 1.5rem;">Simulasi Pesanan Tercatat</h2>
+        </div>
+        <p style="margin: 0; color: var(--on-surface-variant);">
+          Terima kasih. Berikut adalah ringkasan pengajuan simulasi Anda. Tidak ada tagihan atau transaksi nyata yang diproses.
+        </p>
+        <div id="confirm-receipt-body" style="background-color: var(--surface-container-low); border: var(--rule-soft); padding: var(--space-md); font-size: 0.9rem; display: flex; flex-direction: column; gap: var(--space-xs);">
+          <!-- Receipt populated by JS -->
+        </div>
+        <div style="display: flex; justify-content: flex-end; padding-top: var(--space-sm);">
+          <button type="button" class="btn btn-primary" onclick="closeModal('confirm-modal')">Tutup &amp; Lanjutkan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i data-lucide="check" width="16" height="16" aria-hidden="true"></i>
+    <span id="toast-message">Sofa ditambahkan ke simulasi pesanan.</span>
+  </div>
+
+  <api-shim></api-shim>
+  <script src="js/script.js"></script>
+</body>
+</html>
